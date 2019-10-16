@@ -1,9 +1,11 @@
 import React from 'react'
 
-const Coin = props =>{
-<div>
-  <p>{props.id}</p>
-</div>
+const Coin = (props) => {
+  return (
+  <div>
+    <p>{props.coinId}</p>
+  </div>
+  )
 }
 
 export default Coin
