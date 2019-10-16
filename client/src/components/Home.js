@@ -10,7 +10,7 @@ class Home extends React.Component {
     }
 
   }
-  componentWillMount = async () => {
+  componentDidMount = async () => {
     await this.coinCall()
   }
 
@@ -18,9 +18,9 @@ class Home extends React.Component {
     try {
       const data = await ApiData()
       this.setState({
-        data:data
+        data: data
       })
-      
+
     } catch (error) {
       throw error
     }
@@ -28,13 +28,14 @@ class Home extends React.Component {
 
   render() {
     console.log(this.state.data)
-    // const coins = this.state.data.map(coin=>(
-    //   <Coin coinId={coin.id}/>
-    //   ))
-    const coinsArray=Array.from(this.state.data)
-    // console.log(coins)
-    const coins = coinsArray.map(coin=>(
-  <Coin coinId={coin.id}/>
+    const coinsArray = Array.from(this.state.data)
+    const coins = coinsArray.map(coin => (
+      <Coin 
+      key={coin.id}
+        coinId={coin.name}
+        price={coin.market_data.current_price.usd}
+        image={coin.image.small}
+      />
     ))
     return (
       <div>
