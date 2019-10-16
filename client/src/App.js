@@ -8,6 +8,9 @@ import { login, getProfile, signUp } from './services/apiService'
 import ProtectedRoute from './components/ProtectedRoute'
 import authService from './services/authService'
 import SignUp from './components/SignUp'
+// import CryptoList from './components/CryptoList'
+import ApiData from './services/coinAPI'
+
 
 class App extends Component {
   constructor(props) {
@@ -80,6 +83,7 @@ class App extends Component {
   }
 
   render() {
+   
     const { isSignedIn, user } = this.state
 
     return (
@@ -105,7 +109,7 @@ class App extends Component {
             </div>
           }
         </nav>
-
+         
         <main>
           <Route exact path='/' component={Home} />
 
@@ -139,6 +143,7 @@ class App extends Component {
                 />
             }
           />
+          
         </main>
       </div>
     )
