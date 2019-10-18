@@ -1,10 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Route, Switch } from 'react-router-dom'
 import Coin from './Coin'
+import CoinInfo from './CoinInfo'
 
 import ApiData from '../services/coinAPI'
 
-class CryptoList extends React.Component{
+class CryptoList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -31,16 +32,33 @@ class CryptoList extends React.Component{
     console.log(this.state.data)
     const coinsArray = Array.from(this.state.data)
     const coins = coinsArray.map(coin => (
-      <Coin
+      <Link
         key={coin.id}
-        coinId={coin.name}
-        price={coin.market_data.current_price.usd}
-        image={coin.image.small}
-      />
+        to={{
+          pathname: '/CoinInfo',
+          state: { data: this.state.data }
+        }}
+      >
+        <Coin
+          coinId={coin.name}
+          price={coin.market_data.current_price.usd}
+          image={coin.image.small}
+        />
+      </Link>
     ))
     return (
       <div>
         <ul>{coins}</ul>
+
+        <Switch>
+          {/* <Route>
+           <CoinInfo />
+         </Route> */}
+          <Route
+            path='/CoinInfo'
+             exact component={(props) => <CoinInfo {...props} />}
+          />
+        </Switch>
       </div>
     )
   }

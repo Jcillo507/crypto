@@ -5,10 +5,10 @@ class CoinInfo extends React.Component{
   super(props)
   }
   render(){
-    console.log(this.props)
+    console.log("**********", this.props)
     return(
       <div>
-        <p>working</p>
+        <p>working!!!fuck</p>
       </div>
     )
   }
