@@ -12,19 +12,11 @@ class Home extends React.Component {
     }
   }
   render() {
+    
     return (
       <div>
         <h1>Home</h1>
         <CryptoList />
-        {/* <Switch> */}
-          {/* <Route>
-           <CoinInfo />
-         </Route> */}
-          {/* <Route
-            exactpath='/CoinInfo'
-            render={(props) => <CoinInfo {...props} />}
-          />
-        </Switch> */}
       </div>
     )
   }

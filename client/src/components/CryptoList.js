@@ -22,8 +22,10 @@ class CryptoList extends React.Component {
       this.setState({
         data: data
       })
+      console.log(this.state)
 
-    } catch (error) {
+    } 
+    catch (error) {
       throw error
     }
   }
@@ -32,33 +34,28 @@ class CryptoList extends React.Component {
     console.log(this.state.data)
     const coinsArray = Array.from(this.state.data)
     const coins = coinsArray.map(coin => (
-      <Link
+      <div><Link
         key={coin.id}
         to={{
-          pathname: '/CoinInfo',
+          pathname: `/CoinInfo`,
           state: { data: this.state.data }
         }}
       >
         <Coin
+          pathname={CoinInfo}
+          component={CoinInfo}
           coinId={coin.name}
           price={coin.market_data.current_price.usd}
           image={coin.image.small}
         />
-      </Link>
+
+      </Link>    
+     
+      </div>
     ))
     return (
       <div>
         <ul>{coins}</ul>
-
-        <Switch>
-          {/* <Route>
-           <CoinInfo />
-         </Route> */}
-          <Route
-            path='/CoinInfo'
-             exact component={(props) => <CoinInfo {...props} />}
-          />
-        </Switch>
       </div>
     )
   }

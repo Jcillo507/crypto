@@ -1,10 +1,12 @@
 import React from 'react'
+import {Route} from "react-router-dom"
 
 const Coin = (props) => {
+  
   return (
-  <div>
-    <p><img src={props.image}/>{props.coinId} {props.price}</p>
-  </div>
+    <div>
+     <Route><p><img src={props.image} />{props.coinId} {props.price}</p></Route> 
+    </div>
   )
 }
 

@@ -8,6 +8,7 @@ import { login, getProfile, signUp } from './services/apiService'
 import ProtectedRoute from './components/ProtectedRoute'
 import authService from './services/authService'
 import SignUp from './components/SignUp'
+import CoinInfo from './components/CoinInfo'
 // import CryptoList from './components/CryptoList'
 import ApiData from './services/coinAPI'
 
@@ -17,7 +18,8 @@ class App extends Component {
     super(props)
     this.state = {
       isSignedIn: false,
-      user: {}
+      user: {}, 
+      data: {}
     }
 
     this.loginUser = this.loginUser.bind(this)
@@ -29,14 +31,28 @@ class App extends Component {
     // fetch user data on page refresh
     try {
       const fetchedUser = await getProfile()
-
+      const data = await this.coinCall()
       this.setState({
         isSignedIn: authService.isAuthenticated(),
-        user: fetchedUser
+        user: fetchedUser,
+        data: data,
       })
     } catch (e) {
       // throw e
       console.log('Issue fetching token')
+    }
+  }
+    coinCall = async () => {
+    try {
+      const data = await ApiData()
+      this.setState({
+        data: data
+      })
+      console.log(this.state)
+
+    } 
+    catch (error) {
+      throw error
     }
   }
 
@@ -143,6 +159,11 @@ class App extends Component {
                 />
             }
           />
+          
+            <Route
+              exactpath='/CoinInfo'
+              render={(props) => <CoinInfo {...props} props={this.state}/>}
+            />
           
         </main>
       </div>
