@@ -48,8 +48,6 @@ class App extends Component {
       this.setState({
         data: data
       })
-      console.log(this.state)
-
     } 
     catch (error) {
       throw error
@@ -100,7 +98,7 @@ class App extends Component {
 
   render() {
    
-    const { isSignedIn, user } = this.state
+    const { isSignedIn, user, data } = this.state
 
     return (
       <div className='App'>
@@ -127,7 +125,7 @@ class App extends Component {
         </nav>
          
         <main>
-          <Route exact path='/' component={Home} />
+          <Route exact path='/' component={Home} props={this.state.data}/>
 
           {/* <ProtectedRoute> to "protect" our <Dashboard> component  */}
           <ProtectedRoute
@@ -161,8 +159,8 @@ class App extends Component {
           />
           
             <Route
-              exactpath='/CoinInfo'
-              render={(props) => <CoinInfo {...props} props={this.state}/>}
+              exact path={`/CoinInfo/:id`}
+              exact render={(props) => <CoinInfo {...props} data={data}/>}
             />
           
         </main>

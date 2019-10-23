@@ -24,35 +24,37 @@ class CryptoList extends React.Component {
       })
       console.log(this.state)
 
-    } 
+    }
     catch (error) {
       throw error
     }
   }
 
   render() {
-    console.log(this.state.data)
+    const coinData = this.state
+    console.log(this.state)
     const coinsArray = Array.from(this.state.data)
     const coins = coinsArray.map(coin => (
       <div><Link
-        key={coin.id}
-        to={{
-          pathname: `/CoinInfo`,
-          state: { data: this.state.data }
-        }}
+      key={coin.id}
+      to={{
+        pathname: `/CoinInfo/${coin.id}`,
+        state: { data: coin.id, }
+      }}
+      data={coin}
       >
         <Coin
-          pathname={CoinInfo}
-          component={CoinInfo}
           coinId={coin.name}
           price={coin.market_data.current_price.usd}
           image={coin.image.small}
+
         />
 
-      </Link>    
-     
+      </Link>
+
       </div>
     ))
+    console.log(this.state)
     return (
       <div>
         <ul>{coins}</ul>
