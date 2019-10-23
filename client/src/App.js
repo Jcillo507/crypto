@@ -125,7 +125,7 @@ class App extends Component {
         </nav>
          
         <main>
-          <Route exact path='/' component={Home} props={this.state.data}/>
+          <Route exact path='/' component={Home} coins={this.state.data}/>
 
           {/* <ProtectedRoute> to "protect" our <Dashboard> component  */}
           <ProtectedRoute
