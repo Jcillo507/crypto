@@ -1,18 +1,18 @@
 import React from 'react'
-
 class CoinInfo extends React.Component {
   constructor(props) {
     super(props)
   }
-
   render() {
+
    const { data } = this.props.location.state
    const { market_data } = this.props.location.state.data
    console.log(data)
    console.log(market_data)
     return (
       <div>
-        <p>coin name: {data.name}</p>
+        <h1>{data.name}</h1>
+        <p>Current price {market_data.current_price.usd}</p>
         <img src={data.image.large}/>
         <p>circulating supply:{market_data.circulating_supply}</p>
         <p>24h high: {market_data.high_24h.usd}</p>

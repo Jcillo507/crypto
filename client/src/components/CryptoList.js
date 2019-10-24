@@ -30,6 +30,7 @@ class CryptoList extends React.Component {
 
   render() {
     const coinsArray = Array.from(this.state.data)
+    console.log(coinsArray)
     const coins = coinsArray.map(coin => (
       <div><Link
       key={coin.id}

@@ -1,7 +1,8 @@
 import React from 'react'
 import CryptoList from './CryptoList'
-import CoinInfo from './CoinInfo'
+import CoinNews from '../services/newsAPI'
 import { Link, Route, Switch } from 'react-router-dom'
+import News from './News'
 
 
 class Home extends React.Component {
@@ -16,7 +17,10 @@ class Home extends React.Component {
     return (
       <div>
         <h1>Home</h1>
-        <CryptoList />
+        {/* <CryptoList /> */}
+        {/* <CoinNews/> */}
+        <News />
+
       </div>
     )
   }
