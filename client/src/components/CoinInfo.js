@@ -1,19 +1,86 @@
 import React from 'react'
+import { CoinNews, CoinReddit, CoinTweet } from '../services/newsAPI'
+
 class CoinInfo extends React.Component {
   constructor(props) {
     super(props)
+    this.data = this.props.location.state.data
+    this.state={
+      news:[],
+      reds:[],
+      tweets:[]
+    }
+  }
+  
+  componentDidMount = async () =>{
+    await this.coinCall()
+    await this.redCall()
+    await this.tweetCall()
+  }
+  coinCall = async()=>{
+    try {
+      const news = await CoinNews(this.data.id)
+      this.setState({
+        news: news
+      })
+      } catch (error) {
+        throw error
+      }  
+  }
+  redCall = async()=>{
+    try {
+      const reds = await CoinReddit(this.data.id)
+      this.setState({
+        reds:reds
+      })
+    } catch (error) {
+      throw error();
+    }
+  }
+  tweetCall = async()=>{
+    try {
+      const tweets = await CoinTweet(this.data.id)
+      this.setState({
+        tweets:tweets
+      })
+    } catch (error) {
+      throw error
+    }
   }
   render() {
-
-   const { data } = this.props.location.state
    const { market_data } = this.props.location.state.data
-   console.log(data)
-   console.log(market_data)
+   const { news } = this.state
+   const { reds } = this.state
+   const { tweets } = this.state
+   const newsDisplay = news.map(news=>{
+     return(
+       <div>
+         <h3>{news.title}</h3>
+         <p>{news.description}</p>
+         <a href={news.url}>Link to article</a>
+       </div>
+     )
+   })
+   const redsDisplay = reds.map(red=>{
+     return (
+       <div>
+         <h3>{red.title}</h3>
+         <a href={red.url}>Link to reddit</a>
+       </div>
+     )
+   })
+   const tweetDisplay = tweets.map(tweet=>{
+     return(
+       <div>
+         <h4>{tweet.text}</h4>
+       </div>
+     )
+   })
     return (
       <div>
-        <h1>{data.name}</h1>
+        <h1>{this.data.name}</h1>
         <p>Current price {market_data.current_price.usd}</p>
-        <img src={data.image.large}/>
+        <img src={this.data.image.large}/>
         <p>circulating supply:{market_data.circulating_supply}</p>
         <p>24h high: {market_data.high_24h.usd}</p>
         <p> 24 h low: {market_data.low_24h.usd}</p>
@@ -28,6 +95,9 @@ class CoinInfo extends React.Component {
         <p>price change % 60d {market_data.price_change_percentage_60d}</p>
         <p>price change % 200d {market_data.price_change_percentage_200d}</p>
         <p>price change % 1y {market_data.price_change_percentage_1y}</p>
+        {newsDisplay}
+        {redsDisplay}
+        {tweetDisplay}
       </div>
     )
   }

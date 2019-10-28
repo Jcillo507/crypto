@@ -1,15 +1,7 @@
 import React from 'react'
 
-import CoinNews from '../services/newsAPI'
+import {CryptoNews} from '../services/newsAPI'
 
-// const News = async () => {
-
-//   const newsDisplay = await CoinNews.map(news => {
-//     return <div><p>{news.title}</p></div>
-//   })
-//   return (<div>{newsDisplay}</div>)
-
-// }
 class News extends React.Component{
   constructor(props){
   super(props)
@@ -22,7 +14,7 @@ class News extends React.Component{
   }
   newsCall = async ()=>{
     try {
-      const data = await CoinNews()
+      const data = await CryptoNews()
       this.setState({
         data: data
       })
@@ -32,22 +24,17 @@ class News extends React.Component{
   }
   render(){
     const { data } = this.state
-    // console.log(data)
     const display = data.map(article => {
       return (
-        <div>{article.coins[0]._id}</div>
+        <div>
+          <h3>{article.title}</h3>
+          <p>{article.description}</p>
+          <img src={article.originalImageUrl}/>
+        </div>
       )
     })
     return(<div>{display}</div>)
   }
 }
-//  News = async () => {
-
-//     const newsDisplay = await CoinNews.map(news => {
-//       return <div><p>{news.title}</p></div>
-//     })
-//     return (<div>{newsDisplay}</div>)
-
-//   }
 
 export default News

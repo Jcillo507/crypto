@@ -14,14 +14,15 @@ class Home extends React.Component {
   }
   render() {
     
-    return (
-      <div>
+    return (<div>
+      
         <h1>Home</h1>
-        {/* <CryptoList /> */}
+        <div className= "home-ctr"> 
+        <CryptoList />
         {/* <CoinNews/> */}
         <News />
 
-      </div>
+      </div></div>
     )
   }
 }
