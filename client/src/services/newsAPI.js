@@ -21,7 +21,6 @@ export const CryptoNews = async () => {
 export const CoinNews = async (id) => {
   try {
     const coin = await api.get(`/news/coin/${id}`)
-    console.log(coin.data)
     return coin.data
   } catch (error) {
     throw error
@@ -31,7 +30,6 @@ export const CoinNews = async (id) => {
 export const CoinReddit = async (id) => {
   try {
     const reddit = await api.get(`/reddit/coin/${id}`)
-    // console.log(reddit.data)
     return reddit.data
   } catch (error) {
     throw error
@@ -41,7 +39,6 @@ export const CoinReddit = async (id) => {
 export const CoinTweet = async (id)=>{
   try {
     const tweet = await api.get(`/tweets/coin/${id}`)
-    console.log(tweet.data)
     return tweet.data
   } catch (error) {
     throw error

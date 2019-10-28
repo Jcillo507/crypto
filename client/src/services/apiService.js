@@ -16,8 +16,6 @@ export const login = async (data) => {
     const response = await api.post('/auth/login', data)
     const { data: { token, user } } = response
 
-    console.log(response.data)
-
     // store token in localStorage
     // so it can be used on subsequent requests
     localStorage.setItem('token', token)
@@ -31,9 +29,6 @@ export const getProfile = async () => {
   try {
     const response = await api.get('/app/profile')
     const { data: { user } } = response
-
-    console.log(response.data)
-
     return user
   } catch (e) {
     throw e
@@ -44,9 +39,6 @@ export const signUp = async (data) => {
   try {
     const response = await api.post('/auth/signup', data)
     const { data: { user, token } } = response
-
-    console.log(response.data)
-
     // store token in localStorage
     // so it can be used on subsequent requests
     localStorage.setItem('token', token)

@@ -11,7 +11,6 @@ class CoinInfo extends React.Component {
       tweets:[]
     }
   }
-  
   componentDidMount = async () =>{
     await this.coinCall()
     await this.redCall()
@@ -73,6 +72,7 @@ class CoinInfo extends React.Component {
      return(
        <div>
          <h4>{tweet.text}</h4>
+         <a href={tweet.url}>Link To Tweet</a>
        </div>
      )
    })
