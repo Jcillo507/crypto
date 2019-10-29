@@ -30,6 +30,7 @@ class News extends React.Component{
           <h3>{article.title}</h3>
           <p>{article.description}</p>
           <img src={article.originalImageUrl}/>
+          <a href={article.url}>link to article</a>
         </div>
       )
     })

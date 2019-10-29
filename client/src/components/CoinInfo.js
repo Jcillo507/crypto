@@ -56,6 +56,7 @@ class CoinInfo extends React.Component {
        <div>
          <h3>{news.title}</h3>
          <p>{news.description}</p>
+         <img src={news.originalImageUrl}/>
          <a href={news.url}>Link to article</a>
        </div>
      )
@@ -95,8 +96,11 @@ class CoinInfo extends React.Component {
         <p>price change % 60d {market_data.price_change_percentage_60d}</p>
         <p>price change % 200d {market_data.price_change_percentage_200d}</p>
         <p>price change % 1y {market_data.price_change_percentage_1y}</p>
+        <h1>Coin News</h1>
         {newsDisplay}
+        <h1>Coin Reddits</h1>
         {redsDisplay}
+        <h1>Coin tweets</h1>
         {tweetDisplay}
       </div>
     )
