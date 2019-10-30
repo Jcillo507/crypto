@@ -1,10 +1,12 @@
 import React from 'react'
 import { CoinNews, CoinReddit, CoinTweet } from '../services/newsAPI'
+import { addCoin } from '../services/apiService'
 
 class CoinInfo extends React.Component {
   constructor(props) {
     super(props)
     this.data = this.props.location.state.data
+    this.userId=this.props.location.state.userId
     this.state={
       news:[],
       reds:[],
@@ -46,7 +48,22 @@ class CoinInfo extends React.Component {
       throw error
     }
   }
+  handleFavorite = async e =>{
+    e.preventDefault()
+    const restObj = {
+      name: this.data.name
+    }
+    try {
+      const createdCoin = await addCoin(this.userId, restObj)
+      console.log(createdCoin)
+    } catch (error) {
+      console.error(error)
+    }
+    console.log(restObj)
+    console.log(this.userId)
+  }
   render() {
+  console.log(this.userId)
    const { market_data } = this.props.location.state.data
    const { news } = this.state
    const { reds } = this.state
@@ -79,6 +96,7 @@ class CoinInfo extends React.Component {
    })
     return (
       <div>
+        <button onClick={this.handleFavorite}>like this coin</button>
         <h1>{this.data.name}</h1>
         <p>Current price {market_data.current_price.usd}</p>
         <img src={this.data.image.large}/>
@@ -96,12 +114,12 @@ class CoinInfo extends React.Component {
         <p>price change % 60d {market_data.price_change_percentage_60d}</p>
         <p>price change % 200d {market_data.price_change_percentage_200d}</p>
         <p>price change % 1y {market_data.price_change_percentage_1y}</p>
-        <h1>Coin News</h1>
+        {/* <h1>Coin News</h1>
         {newsDisplay}
         <h1>Coin Reddits</h1>
         {redsDisplay}
         <h1>Coin tweets</h1>
-        {tweetDisplay}
+        {tweetDisplay} */}
       </div>
     )
   }

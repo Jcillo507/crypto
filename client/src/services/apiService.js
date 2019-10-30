@@ -14,8 +14,8 @@ const api = axios.create({
 export const login = async (data) => {
   try {
     const response = await api.post('/auth/login', data)
-    const { data: { token, user } } = response
-
+    const { data: { token, user} } = response
+console.log(user)
     // store token in localStorage
     // so it can be used on subsequent requests
     localStorage.setItem('token', token)
@@ -45,5 +45,23 @@ export const signUp = async (data) => {
     return user
   } catch (e) {
     throw e
+  }
+}
+
+export const addCoin = async(userId, coin)=>{
+  try {
+    const response = await api.post(`dashboard/${userId}`, coin)
+    return response
+  } catch (error) {
+    throw error
+  }
+}
+
+export const showFaves = async (userId)=>{
+  try {
+    const resp = await api.get(`/dashboard/${userId}/favorites`)
+    return resp.data
+  } catch (error) {
+    throw error
   }
 }

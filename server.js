@@ -6,6 +6,7 @@ const authRouter = require('./routers/authRouter')
 const passport = require('passport')
 const appRouter = require('./routers/appRouter')
 const { authorized } = require('./auth/auth')
+const { User, Coin } = require("./models");
 
 // establishing the I/O port
 const PORT = process.env.PORT || 4567
@@ -26,15 +27,42 @@ app.use('/auth', authRouter)
 app.use('/app', authorized, appRouter)
 app.use(passport.initialize())
 
-app.get('/', async (request, response) => {
+app.get('/', async (req, res) => {
   try {
-    response.json({ message: 'Crypto' })
+    res.json({ message: 'Crypto' })
   } catch (e) {
-    response.status(e.status).json({ message: e.status })
+    res.status(e.status).json({ message: e.status })
   }
 })
 app.use((err, req, res, next) => {
   res.status(err.status || 500)
   res.json({ message: err.message })
 })
+
+app.post(`/dashboard/:userId`, async( req, res)=>{
+  try {
+    const { userId } = req.params
+    const user = await User.findByPk(userId)
+    const newFav =await Coin.create(req.body)
+    await user.addCoin(newFav)
+    res.send(newFav)
+  } catch (error) {
+    throw error
+  }
+})
+app.get(`/dashboard/:userId/favorites`, async (req, res)=>{
+  try {
+    const { userId } = req.params
+    const user= await User.findByPk(userId,{
+      include: [{
+        model: Coin,
+        through: 'user_coins'
+      }]
+    } )
+    res.send(user)
+  } catch (error) {
+    throw error
+  }
+}
+)
 app.listen(PORT, () => console.log(`App is up and running listening on port ${PORT}`))

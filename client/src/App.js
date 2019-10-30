@@ -19,6 +19,7 @@ class App extends Component {
     this.state = {
       isSignedIn: false,
       user: {}, 
+      userId: [],
       data: {}
     }
 
@@ -58,13 +59,13 @@ class App extends Component {
     try {
       console.log('credentials in loginUser', credentials)
       const user = await login(credentials)
-
       // if login request is a success
       // update state to store user and set
       // isSignedIn to true
       this.setState({
         isSignedIn: true,
-        user: user
+        user: user,
+        userId: user.id 
       })
     } catch (e) {
       throw e
@@ -81,7 +82,9 @@ class App extends Component {
       // isSignedIn to true
       this.setState({
         isSignedIn: true,
-        user: user
+        user: user, 
+        user: user.id
+        
       })
     } catch (e) {
       throw e
@@ -125,7 +128,7 @@ class App extends Component {
         </nav>
          
         <main>
-          <Route exact path='/' component={Home} coins={this.state.data}/>
+        <Route exact path='/' component={(props)=><Home {...props} coins={this.state.data} userId={this.state.userId}/>}/>
 
           {/* <ProtectedRoute> to "protect" our <Dashboard> component  */}
           <ProtectedRoute

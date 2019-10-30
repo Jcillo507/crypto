@@ -2,6 +2,7 @@ import React from 'react'
 
 const Dashboard=(props) =>{
   const { user } = props
+ 
   const name = (user.name !== undefined) ? user.name : ''
 
   return (
