@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link, Route, Switch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Coin from './Coin'
-import CoinInfo from './CoinInfo'
+
 
 import ApiData from '../services/coinAPI'
 

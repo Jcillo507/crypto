@@ -59,7 +59,7 @@ export const addCoin = async(userId, coin)=>{
 
 export const showFaves = async (userId)=>{
   try {
-    const resp = await api.get(`/dashboard/${userId}/favorites`)
+    const resp = await api.get(`/dashboard/${userId}`)
     return resp.data
   } catch (error) {
     throw error

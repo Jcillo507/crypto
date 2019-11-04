@@ -50,7 +50,7 @@ app.post(`/dashboard/:userId`, async( req, res)=>{
     throw error
   }
 })
-app.get(`/dashboard/:userId/favorites`, async (req, res)=>{
+app.get(`/dashboard/:userId`, async (req, res)=>{
   try {
     const { userId } = req.params
     const user= await User.findByPk(userId,{
@@ -60,6 +60,7 @@ app.get(`/dashboard/:userId/favorites`, async (req, res)=>{
       }]
     } )
     res.send(user)
+    console.log(user)
   } catch (error) {
     throw error
   }

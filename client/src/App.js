@@ -20,7 +20,7 @@ class App extends Component {
       isSignedIn: false,
       user: {}, 
       userId: [],
-      data: {}
+      data: {},
     }
 
     this.loginUser = this.loginUser.bind(this)
@@ -66,7 +66,7 @@ class App extends Component {
         isSignedIn: true,
         user: user,
         userId: user.id 
-      })
+      }) 
     } catch (e) {
       throw e
     }
