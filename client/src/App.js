@@ -165,7 +165,7 @@ class App extends Component {
           
             <Route
               exact path={`/CoinInfo/:id`}
-              exact render={(props) => <CoinInfo {...props} data={data}/>}
+              exact render={(props) => <CoinInfo {...props} data={data} user={user}/>}
             />
           
         </main>

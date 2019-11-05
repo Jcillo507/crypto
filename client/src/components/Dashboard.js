@@ -5,21 +5,21 @@ class Dashboard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      faves: {coins: []},
+      faves: { coins: [] },
       id: [],
       coins: [],
     }
   }
-componentDidMount=async ()=>{
-await this.favesCall()
-await getProfile()
-}
+  componentDidMount = async () => {
+    await this.favesCall()
+    await getProfile()
+  }
 
   componentDidUpdate = async (prevProps) => {
-    if(this.props.user.id !== prevProps.user.id)
-    {
-    await this.favesCall() 
-  }}
+    if (this.props.user.id !== prevProps.user.id) {
+      await this.favesCall()
+    }
+  }
 
   favesCall = async () => {
     try {
@@ -35,34 +35,25 @@ await getProfile()
     }
   }
 
-  
-  render () {
+
+  render() {
     const { user } = this.props
     console.log(this.state.faves)
     const { coins } = this.state.faves
-    // console.log(coins)
-    // console.log(user.id)
-    // console.log(this.state)
-
-    // const faveDisplay = async()=>{
-    //   return await Promise.all(coins.map(coin=>(
-    //     <div>{coin.name}</div>
-    //   )))
-    // }
 
     const faveDisplay = coins.map(coin => (
-        <div key={coin.id}>
-          <p>{coin.name}</p>
-        </div>))
-    
+      <div key={coin.id}>
+        <p>{coin.name}</p>
+      </div>))
+
     const name = (user.name !== undefined) ? user.name : ''
     return (
-     
-        <div>
-          <h1>Dashboard</h1>
-          <p>{`Welcome back ${name}`}</p>
-          {faveDisplay}
-        </div>
+
+      <div>
+        <h1>Dashboard</h1>
+        <p>{`Welcome back ${name}`}</p>
+        {faveDisplay}
+      </div>
     )
   }
 }
