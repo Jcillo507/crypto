@@ -1,5 +1,5 @@
 import React from 'react'
-import { showFaves } from '../services/apiService'
+import { showFaves, getProfile } from '../services/apiService'
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -12,6 +12,7 @@ class Dashboard extends React.Component {
   }
 componentDidMount=async ()=>{
 await this.favesCall()
+await getProfile()
 }
 
   componentDidUpdate = async (prevProps) => {

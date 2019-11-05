@@ -51,12 +51,13 @@ class CoinInfo extends React.Component {
     }
   }
   handleFavorite = async e =>{
+    const id = this.state.userId
     e.preventDefault()
     const restObj = {
       name: this.data.name
     }
     try {
-      const createdCoin = await addCoin(this.state.userId, restObj)
+      const createdCoin = await addCoin(id, restObj)
       return createdCoin
     } catch (error) {
       console.error(error)
@@ -67,6 +68,7 @@ class CoinInfo extends React.Component {
   }
   render() {
   console.log(this.props)
+  console.log(this.state.userId)
    const { market_data } = this.props.location.state.data
    const { news } = this.state
    const { reds } = this.state

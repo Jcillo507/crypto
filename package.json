@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon server.js",
-    "db:init": "dropdb --if-exists express_auth_db && createdb express_auth_db",
+    "db:init": "dropdb --if-exists crypto_db && createdb crypto_db",
     "db:reset": "node ./scripts/resetDb.js",
     "db:seed": "node ./scripts/seedDb.js"
   },

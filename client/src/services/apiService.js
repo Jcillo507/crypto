@@ -15,7 +15,7 @@ export const login = async (data) => {
   try {
     const response = await api.post('/auth/login', data)
     const { data: { token, user} } = response
-console.log(user)
+
     // store token in localStorage
     // so it can be used on subsequent requests
     localStorage.setItem('token', token)
@@ -39,6 +39,7 @@ export const signUp = async (data) => {
   try {
     const response = await api.post('/auth/signup', data)
     const { data: { user, token } } = response
+    console.log(user)
     // store token in localStorage
     // so it can be used on subsequent requests
     localStorage.setItem('token', token)

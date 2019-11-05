@@ -38,6 +38,7 @@ class App extends Component {
         user: fetchedUser,
         data: data,
       })
+      console.log(this.state)
     } catch (e) {
       // throw e
       console.log('Issue fetching token')
@@ -74,7 +75,7 @@ class App extends Component {
 
   async signUpUser(credentials) {
     try {
-      console.log('credentials in signUpUser', credentials)
+      console.log('credentials in signUpUser', credentials, this.state)
       const user = await signUp(credentials)
 
       // if signUp request is a success
@@ -83,9 +84,10 @@ class App extends Component {
       this.setState({
         isSignedIn: true,
         user: user, 
-        user: user.id
+        userId: user.id
         
       })
+      
     } catch (e) {
       throw e
     }
@@ -100,7 +102,7 @@ class App extends Component {
   }
 
   render() {
-   
+   console.log(this.state)
     const { isSignedIn, user, data } = this.state
 
     return (

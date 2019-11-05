@@ -21,7 +21,7 @@ const seedDb = async () => {
     })
 
     await Coin.create({
-      name: 'bitcoin'
+      name: 'test'
     })
   } catch (e) {
     console.log(e)
