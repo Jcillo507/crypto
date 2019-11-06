@@ -1,6 +1,6 @@
 import React from 'react'
 import { CoinNews, CoinReddit, CoinTweet } from '../services/newsAPI'
-import { addCoin } from '../services/apiService'
+import { addCoin, getFaves } from '../services/apiService'
 
 class CoinInfo extends React.Component {
   constructor(props) {
@@ -11,13 +11,10 @@ class CoinInfo extends React.Component {
       news: [],
       reds: [],
       tweets: [],
-      userId: this.userId
+      userId: this.userId,
+      faves: { coins: [] },
+      liked: false
     }
-  }
-  componentDidMount = async () => {
-    await this.coinCall()
-    await this.redCall()
-    await this.tweetCall()
   }
 
   coinCall = async () => {
@@ -62,19 +59,33 @@ class CoinInfo extends React.Component {
     } catch (error) {
       console.error(error)
     }
-    console.log(restObj)
-    console.log(this.state.userId)
-    console.log(this.props)
+  }
+  showFaves = async () => {
+    try {
+      const faves = await getFaves(this.props.user.id)
+      this.setState({ faves: faves })
+    } catch (error) {
+      throw error
+    }
+  }
+  // like = () => {
+  //   return this.state.faves.coins.filter(coin => coin.name === this.data.name)
+  // }
+  componentDidMount = async () => {
+    await this.coinCall()
+    await this.redCall()
+    await this.tweetCall()
+    await this.showFaves()
   }
   render() {
-    
     const { market_data } = this.props.location.state.data
     const { news } = this.state
     const { reds } = this.state
     const { tweets } = this.state
+    const { coins } = this.state.faves
     const newsDisplay = news.map(news => {
       return (
-        <div>
+        <div >
           <h3>{news.title}</h3>
           <p>{news.description}</p>
           <img src={news.originalImageUrl} />
@@ -98,9 +109,22 @@ class CoinInfo extends React.Component {
         </div>
       )
     })
+
+    console.log(coins)
+    const like = () => {
+      return coins.filter(coin => coin.name === this.data.name)
+    }
+    
+    console.log(like(), typeof(like()))
+    console.log(this.props)
+    const likedArray= Array.from(like())
+    const button = () => {
+      return likedArray.length>0 ? <button>Unfollow</button> : <button onClick={this.handleFavorite}>like this coin</button>
+    }
     return (
       <div>
-        <button onClick={this.handleFavorite}>like this coin</button>
+        {button()}
+
         <h1>{this.data.name}</h1>
         <p>Current price {market_data.current_price.usd}</p>
         <img src={this.data.image.large} />

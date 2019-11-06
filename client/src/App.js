@@ -102,7 +102,6 @@ class App extends Component {
   }
 
   render() {
-   console.log(this.state)
     const { isSignedIn, user, data } = this.state
 
     return (

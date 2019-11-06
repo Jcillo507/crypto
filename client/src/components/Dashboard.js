@@ -1,5 +1,5 @@
 import React from 'react'
-import { showFaves, getProfile } from '../services/apiService'
+import { getFaves, getProfile } from '../services/apiService'
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class Dashboard extends React.Component {
   favesCall = async () => {
     try {
       console.log("called")
-      const faves = await showFaves(this.props.user.id)
+      const faves = await getFaves(this.props.user.id)
       console.log(faves)
       this.setState({
         faves: faves,

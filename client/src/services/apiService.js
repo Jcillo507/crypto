@@ -58,7 +58,7 @@ export const addCoin = async(userId, coin)=>{
   }
 }
 
-export const showFaves = async (userId)=>{
+export const getFaves = async (userId)=>{
   try {
     const resp = await api.get(`/dashboard/${userId}`)
     return resp.data
