@@ -83,9 +83,10 @@ class CoinInfo extends React.Component {
     const { reds } = this.state
     const { tweets } = this.state
     const { coins } = this.state.faves
+    console.log(news)
     const newsDisplay = news.map(news => {
       return (
-        <div >
+        <div key={news._id}>
           <h3>{news.title}</h3>
           <p>{news.description}</p>
           <img src={news.originalImageUrl} />
@@ -95,7 +96,7 @@ class CoinInfo extends React.Component {
     })
     const redsDisplay = reds.map(red => {
       return (
-        <div>
+        <div key={red.id}>
           <h3>{red.title}</h3>
           <a href={red.url}>Link to reddit</a>
         </div>
@@ -103,7 +104,7 @@ class CoinInfo extends React.Component {
     })
     const tweetDisplay = tweets.map(tweet => {
       return (
-        <div>
+        <div key={tweet.id}>
           <h4>{tweet.text}</h4>
           <a href={tweet.url}>Link To Tweet</a>
         </div>
