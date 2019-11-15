@@ -1,6 +1,6 @@
 import React from 'react'
 import { CoinNews, CoinReddit, CoinTweet } from '../services/newsAPI'
-import { addCoin, getFaves } from '../services/apiService'
+import { addCoin, getFaves, deleteCoin } from '../services/apiService'
 
 class CoinInfo extends React.Component {
   constructor(props) {
@@ -48,29 +48,50 @@ class CoinInfo extends React.Component {
     }
   }
   handleFavorite = async e => {
-    const id = this.props.user.id
     e.preventDefault()
+    const id = this.props.user.id
     const restObj = {
       name: this.data.name
     }
     try {
       const createdCoin = await addCoin(id, restObj)
+      this.setState({liked: true})
       return createdCoin
     } catch (error) {
       console.error(error)
+    }
+  }
+  handleUnfavorite= async e =>{
+    e.preventDefault()
+    const id = this.props.user.id
+    console.log(this.data)
+    const restObj = {
+      name: this.data.id
+    }
+    try {
+      const deleteFavorite = await deleteCoin(id, restObj)
+      this.setState({liked: false})
+      return deleteFavorite
+    } catch (error) {
+      throw error
     }
   }
   showFaves = async () => {
     try {
       const faves = await getFaves(this.props.user.id)
       this.setState({ faves: faves })
+      const like=()=> {
+      return this.state.faves.coins.filter(coin => coin.name === this.data.name)}
+      const likedArray = Array.from(like())
+      if (likedArray.length > 0){
+        this.setState({liked:true})
+      }
+
     } catch (error) {
       throw error
     }
   }
-  // like = () => {
-  //   return this.state.faves.coins.filter(coin => coin.name === this.data.name)
-  // }
+
   componentDidMount = async () => {
     await this.coinCall()
     await this.redCall()
@@ -82,8 +103,6 @@ class CoinInfo extends React.Component {
     const { news } = this.state
     const { reds } = this.state
     const { tweets } = this.state
-    const { coins } = this.state.faves
-    console.log(news)
     const newsDisplay = news.map(news => {
       return (
         <div key={news._id}>
@@ -96,7 +115,7 @@ class CoinInfo extends React.Component {
     })
     const redsDisplay = reds.map(red => {
       return (
-        <div key={red.id}>
+        <div key={red._id}>
           <h3>{red.title}</h3>
           <a href={red.url}>Link to reddit</a>
         </div>
@@ -104,28 +123,15 @@ class CoinInfo extends React.Component {
     })
     const tweetDisplay = tweets.map(tweet => {
       return (
-        <div key={tweet.id}>
+        <div key={tweet._id}>
           <h4>{tweet.text}</h4>
           <a href={tweet.url}>Link To Tweet</a>
         </div>
       )
     })
-
-    console.log(coins)
-    const like = () => {
-      return coins.filter(coin => coin.name === this.data.name)
-    }
-    
-    console.log(like(), typeof(like()))
-    console.log(this.props)
-    const likedArray= Array.from(like())
-    const button = () => {
-      return likedArray.length>0 ? <button>Unfollow</button> : <button onClick={this.handleFavorite}>like this coin</button>
-    }
     return (
       <div>
-        {button()}
-
+        {this.state.liked ? <button onClick={this.handleUnfavorite}>Unfollow</button> : <button onClick={this.handleFavorite}>like this coin</button>}
         <h1>{this.data.name}</h1>
         <p>Current price {market_data.current_price.usd}</p>
         <img src={this.data.image.large} />

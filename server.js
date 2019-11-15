@@ -43,7 +43,7 @@ app.post(`/dashboard/:userId`, async( req, res)=>{
   try {
     const { userId } = req.params
     const user = await User.findByPk(userId)
-    const newFav =await Coin.create(req.body)
+    const newFav = await Coin.create(req.body)
     await user.addCoin(newFav)
     res.send(newFav)
   } catch (error) {
@@ -64,6 +64,17 @@ app.get(`/dashboard/:userId`, async (req, res)=>{
   } catch (error) {
     throw error
   }
-}
-)
+})
+app.delete(`/dashboard/:userId`, async (req, res)=>{
+  try {
+    const { userId } = req.params
+    const user = await User.findByPk(userId)
+    const unFav= await Coin.findByPk(req.body.name)
+    await user.removeCoin(unFav)
+    res.send(unFav)
+
+  } catch (error) {
+    throw error
+  }
+})
 app.listen(PORT, () => console.log(`App is up and running listening on port ${PORT}`))

@@ -32,8 +32,8 @@ class CryptoList extends React.Component {
     console.log(this.props)
     const coinsArray = Array.from(this.state.data)
     const coins = coinsArray.map(coin => (
-      <div><Link
-      key={coin.id}
+      <div key={coin.id}><Link
+      
       to={{
         pathname: `/CoinInfo/${coin.id}`,
         state: { data: coin, userId: this.props.userId }
