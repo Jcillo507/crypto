@@ -24,9 +24,10 @@ class News extends React.Component{
   }
   render(){
     const { data } = this.state
+  
     const display = data.map(article => {
       return (
-        <div>
+        <div >
           <h3>{article.title}</h3>
           <p>{article.description}</p>
           <img src={article.originalImageUrl}/>

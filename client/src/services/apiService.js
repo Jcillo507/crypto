@@ -66,3 +66,13 @@ export const getFaves = async (userId)=>{
     throw error
   }
 }
+export const deleteCoin = async (userId, coin) => {
+  try {
+    console.log(userId, coin)
+    const response = await api.delete(`/dashboard/${userId}`, coin)
+    console.log(response)
+    return response
+  } catch (error) {
+    throw error
+  }
+}
