@@ -52,6 +52,8 @@ export const signUp = async (data) => {
 export const addCoin = async(userId, coin)=>{
   try {
     const response = await api.post(`dashboard/${userId}`, coin)
+    console.log(coin)
+    console.log(response)
     return response
   } catch (error) {
     throw error
@@ -69,8 +71,9 @@ export const getFaves = async (userId)=>{
 export const deleteCoin = async (userId, coin)=>{
   try {
     console.log(userId, coin)
-    const resp = await api.delete(`/dashboard/${userId}`, coin)
-    return resp
+    const response = await api.delete(`/dashboard/${userId}`, coin)
+    console.log(response)
+    return response
   } catch (error) {
     throw error
   }

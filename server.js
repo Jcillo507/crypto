@@ -41,9 +41,12 @@ app.use((err, req, res, next) => {
 
 app.post(`/dashboard/:userId`, async( req, res)=>{
   try {
+    console.log(req.params)
+    // console.log('working')
     const { userId } = req.params
     const user = await User.findByPk(userId)
     const newFav = await Coin.create(req.body)
+    console.log(newFav)
     await user.addCoin(newFav)
     res.send(newFav)
   } catch (error) {
@@ -56,7 +59,7 @@ app.get(`/dashboard/:userId`, async (req, res)=>{
     const user= await User.findByPk(userId,{
       include: [{
         model: Coin,
-        through: 'user_coins'
+        through: 'favorites'
       }]
     } )
     res.send(user)
@@ -70,9 +73,9 @@ app.delete(`/dashboard/:userId`, async (req, res)=>{
     const { userId } = req.params
     const user = await User.findByPk(userId)
     const unFav= await Coin.findByPk(req.body.name)
+    console.log(unFav)
     await user.removeCoin(unFav)
     res.send(unFav)
-
   } catch (error) {
     throw error
   }

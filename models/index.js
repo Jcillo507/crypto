@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const UserModel = require('./user')
 const CoinModel = require('./coin')
+const FavoriteModel = require('./favorites')
 const bcrypt = require('bcrypt')
 
 // connection to the database
@@ -11,15 +12,16 @@ const db = new Sequelize({
 
 const User = UserModel(db, Sequelize)
 const Coin = CoinModel(db, Sequelize)
+const Favorites = FavoriteModel(db, Sequelize)
 
 Coin.belongsToMany(User, {
   onDelete: 'cascade',
-  through: 'user_coins'
+  through: 'favorites'
 })
 
 User.belongsToMany(Coin, {
   onDelete:'cascade',
-  through: 'user_coins'
+  through: 'favorites'
 })
 
 User.beforeCreate(async (user, options) => {
@@ -30,5 +32,6 @@ User.beforeCreate(async (user, options) => {
 module.exports = {
   db,
   User,
-  Coin
+  Coin, 
+  Favorites
 }

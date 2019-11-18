@@ -40,6 +40,7 @@ class Dashboard extends React.Component {
     const { user } = this.props
     console.log(this.state.faves)
     const { coins } = this.state.faves
+    console.log(coins)
 
     const faveDisplay = coins.map(coin => (
       <div key={coin.id}>

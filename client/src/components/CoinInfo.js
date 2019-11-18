@@ -50,12 +50,15 @@ class CoinInfo extends React.Component {
   handleFavorite = async e => {
     e.preventDefault()
     const id = this.props.user.id
-    const restObj = {
-      name: this.data.name
+    const coin = {
+      coin: this.data.name
     }
+    console.log(this.data.name)
+    console.log(coin)
     try {
-      const createdCoin = await addCoin(id, restObj)
+      const createdCoin = await addCoin(id, coin)
       this.setState({liked: true})
+      console.log(createdCoin)
       return createdCoin
     } catch (error) {
       console.error(error)
