@@ -1,4 +1,4 @@
-const { User } = require('../models/index')
+const { User, Coin } = require('../models/index')
 
 const seedDb = async () => {
   try {
@@ -18,6 +18,10 @@ const seedDb = async () => {
       name: 'Tony Stark',
       email: 'ironman@fakemail.com',
       password: 'helloworld'
+    })
+
+    await Coin.create({
+      name: 'test'
     })
   } catch (e) {
     console.log(e)

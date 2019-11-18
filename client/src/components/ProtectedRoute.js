@@ -6,7 +6,7 @@ import { Route, Redirect } from 'react-router-dom'
  * Protected route using React Router
  * https://tylermcginnis.com/react-router-protected-routes-authentication/
  */
-function ProtectedRoute({ component: Component, ...rest }) {
+const ProtectedRoute=({ component: Component, ...rest }) =>{
   return (
     <Route
       {...rest}

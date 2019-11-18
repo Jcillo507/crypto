@@ -1,34 +1,58 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-// import Coin from './Coin'
+import Coin from './Coin'
+
 
 import ApiData from '../services/coinAPI'
 
-class CryptoList extends React.Component{
-  constructor(props){
-    super(props);
-    this.state={
-      data: []
+class CryptoList extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: {}
     }
   }
-  componentDidMount(){
-    this.getData()
+  componentDidMount = async () => {
+    await this.coinCall()
   }
-  getData= async()=>{
-    const data = await ApiData
-    this.setState({
-      data:data
-    })
-    console.log(this.state)
-    
-      return(
-        <p>working</p>
-      )
-    
-
-    // const coins = this.state.data.map(coin=>{
-    
-    // })
+  
+  coinCall = async () => {
+    try {
+      const data = await ApiData()
+      this.setState({
+        data: data
+      })
+    }
+    catch (error) {
+      throw error
+    }
+  }
+  
+  render() {
+    console.log(this.props)
+    const coinsArray = Array.from(this.state.data)
+    const coins = coinsArray.map(coin => (
+      <div key={coin._id}><Link
+      key={coin.id}
+      to={{
+        pathname: `/CoinInfo/${coin.id}`,
+        state: { data: coin, userId: this.props.userId }
+      }}
+      data={coin}>
+        <Coin
+          coinId={coin.name}
+          price={coin.market_data.current_price.usd}
+          image={coin.image.small}
+        />
+      </Link>
+      </div>
+    )
+    )
+    return (
+      <div>
+        <ul>{coins}</ul>
+      </div>
+    )
   }
 }
 

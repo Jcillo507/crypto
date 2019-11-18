@@ -1,5 +1,5 @@
 .App {
-  width: 1028px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -73,6 +73,10 @@ a {
   padding: 0;
   text-decoration: none;
   font-size: inherit;
+}
+.home-ctr{
+  display:flex;
+  flex-direction: row;
 }
 
 nav button,

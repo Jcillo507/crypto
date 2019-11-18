@@ -1,5 +1,6 @@
 import React from 'react'
-import ApiData from '../services/coinAPI'
+import CryptoList from './CryptoList'
+import News from './News'
 
 class Home extends React.Component {
   constructor(props) {
@@ -7,32 +8,14 @@ class Home extends React.Component {
     this.state = {
       data: {}
     }
-
   }
-  componentDidMount = async () => {
-    await this.coinCall()
-  }
-
-  coinCall = async () => {
-    try {
-      console.log("******called*********")
-      const data = await ApiData()
-      this.setState({
-        data
-      })
-      
-    } catch (error) {
-      throw error
-    }
-  }
-
   render() {
-    console.log(this.state.data)
-
-    return (
-      <div>
+    return (<div>
         <h1>Home</h1>
-      </div>
+        <div className= "home-ctr"> 
+        <CryptoList {...this.props}/>
+        <News />
+      </div></div>
     )
   }
 }
