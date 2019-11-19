@@ -39,26 +39,26 @@ app.use((err, req, res, next) => {
   res.json({ message: err.message })
 })
 
-app.post(`/dashboard/:userId`, async (req, res) => {
+app.post(`/dashboard/:userId`, async( req, res)=>{
   try {
     const { userId } = req.params
     const user = await User.findByPk(userId)
-    const newFav = await Coin.create(req.body)
+    const newFav =await Coin.create(req.body)
     await user.addCoin(newFav)
     res.send(newFav)
   } catch (error) {
     throw error
   }
 })
-app.get(`/dashboard/:userId`, async (req, res) => {
+app.get(`/dashboard/:userId`, async (req, res)=>{
   try {
     const { userId } = req.params
-    const user = await User.findByPk(userId, {
+    const user= await User.findByPk(userId,{
       include: [{
         model: Coin,
         through: 'user_coins'
       }]
-    })
+    } )
     res.send(user)
     console.log(user)
   } catch (error) {
@@ -71,7 +71,7 @@ app.put(`/dashboard/:userId/:coin`, async (req, res) => {
     const { userId, coin } = req.params
     console.log(req.params, coin)
     const user = await User.findByPk(userId)
-    const unFav = await Coin.findAll({ include: [{ model: User, include: [{ model: Coin }] }] })
+    const unFav = await Coin.findAll({where:[{name:coin}]})
     console.log(unFav)
     await user.removeCoin(unFav)
     res.send(unFav)
