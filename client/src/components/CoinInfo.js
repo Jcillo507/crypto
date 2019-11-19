@@ -54,7 +54,7 @@ class CoinInfo extends React.Component {
       name: this.data.name
     }
     console.log(this.data.name)
-    
+
     try {
       const createdCoin = await addCoin(id, restObj)
       this.setState({ liked: true })
@@ -69,7 +69,7 @@ class CoinInfo extends React.Component {
     const id = this.props.user.id
     console.log(this.data)
     const restObj = {
-      name: this.data.id
+      name: this.data.name
     }
     this.setState({ liked: false })
     try {
