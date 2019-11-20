@@ -14,12 +14,12 @@ const Coin = CoinModel(db, Sequelize)
 
 Coin.belongsToMany(User, {
   onDelete: 'cascade',
-  through: 'user_coins'
+  through: 'user_coins', 
 })
 
 User.belongsToMany(Coin, {
   onDelete:'cascade',
-  through: 'user_coins'
+  through: 'user_coins',
 })
 
 User.beforeCreate(async (user, options) => {

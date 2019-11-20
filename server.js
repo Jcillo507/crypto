@@ -66,4 +66,17 @@ app.get(`/dashboard/:userId`, async (req, res)=>{
   }
 }
 )
+app.put(`/dashboard/:userId/:coin`, async (req, res) => {
+  try {
+    const { userId, coin } = req.params
+    console.log(req.params, coin)
+    const user = await User.findByPk(userId)
+    const unFav = await Coin.findAll({where:[{name:coin}]})
+    console.log(unFav)
+    await user.removeCoin(unFav)
+    res.send(unFav)
+  } catch (error) {
+    throw error
+  }
+})
 app.listen(PORT, () => console.log(`App is up and running listening on port ${PORT}`))
