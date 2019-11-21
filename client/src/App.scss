@@ -1,0 +1,121 @@
+@import './base.scss';
+@import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i,900,900i&display=swap');
+
+
+* {
+  font-family: 'Lato',
+    sans-serif;
+}
+
+.App {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.App-header {
+  position: fixed;
+  width: 100%;
+  background-color: $header-color;
+  height: 6vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: calc(10px + 2vmin);
+  box-shadow: 0px 6px 20px $header-shadow;
+  padding:3px;
+  top: 0;
+}
+
+.App-link {
+  color: $link-font;
+}
+
+.login-form {
+  padding: 15px;
+  width: 400px;
+  border: 1px #eee solid;
+}
+
+.form {
+  label {
+    font-size: 20px;
+  }
+
+  input {
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    border-radius: 3px;
+    padding: 5px;
+    display: block;
+  }
+
+  button {
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5%;
+  }
+}
+
+.errorMessage {
+  border: red 1px solid;
+  background-color: #FAE2E2;
+  padding: 10px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.nav-section {
+  // min-width: 250px;
+  display: flex;
+  justify-content: space-around;
+}
+
+a {
+  text-decoration: none;
+}
+
+.nav-section {
+  button {
+    background-color: none;
+    border: none;
+    font-weight: bold;
+    padding: 2px;
+    text-decoration: none;
+    font-size: inherit;
+  }
+
+}
+
+// .home-ctr {
+//   display: flex;
+//   flex-direction: row;
+// }
+
+nav button,
+nav a {
+  color: $link-font;
+  margin: 10px;
+}
+
+nav button:hover,
+nav a:hover {
+  background-color:$hover;
+}
+
+nav button:visited,
+nav a:visited {
+  background-color: $hover;
+}
+
+nav button:hover {
+  cursor: pointer;
+}

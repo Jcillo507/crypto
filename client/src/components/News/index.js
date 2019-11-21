@@ -1,6 +1,7 @@
 import React from 'react'
+import './news.scss'
 
-import {CryptoNews} from '../services/newsAPI'
+import {CryptoNews} from '../../services/newsAPI'
 
 class News extends React.Component{
   constructor(props){
@@ -27,11 +28,10 @@ class News extends React.Component{
   
     const display = data.map(article => {
       return (
-        <div >
-          <h3>{article.title}</h3>
-          <p>{article.description}</p>
-          <img src={article.originalImageUrl}/>
-          <a href={article.url}>link to article</a>
+        <div className="news-ctr">
+          <a href={article.url}><h3>{article.title}</h3></a>
+          <p className="news-desc">{article.description}</p>
+          <img className="news-img" src={article.originalImageUrl}/>
         </div>
       )
     })
