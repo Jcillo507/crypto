@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Coin from './Coin'
+import Coin from '../Coin/'
+import './cryptolist.scss'
 
 
-import ApiData from '../services/coinAPI'
+import ApiData from '../../services/coinAPI'
 
 class CryptoList extends React.Component {
   constructor(props) {
@@ -50,7 +51,7 @@ class CryptoList extends React.Component {
     )
     return (
       <div>
-        <ul>{coins}</ul>
+        <ul className='list-ctr'>{coins}</ul>
       </div>
     )
   }

@@ -32,7 +32,7 @@ class News extends React.Component{
           <a href={article.url}><h3>{article.title}</h3></a>
           <p className="news-desc">{article.description}</p>
           <img className="news-img" src={article.originalImageUrl}/>
-          <br/>
+          
         </div>
       )
     })

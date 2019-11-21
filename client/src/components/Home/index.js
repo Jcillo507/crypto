@@ -1,6 +1,6 @@
 import React from 'react'
 import './home.scss'
-import CryptoList from '../CryptoList'
+import CryptoList from '../CryptoList/'
 import News from '../News'
 
 class Home extends React.Component {
@@ -15,10 +15,10 @@ class Home extends React.Component {
       <div className='home-bs'>
         <h1>CryptoNews</h1>
         <div className='home-ctr'>
-          <div className='list-ctr'>
-          <CryptoList {...this.props} /></div>
+          <CryptoList {...this.props} />
           <News />
-        </div></div>
+        </div>
+        </div>
     )
   }
 }

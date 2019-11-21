@@ -1,0 +1,36 @@
+@import '../../base.scss';
+
+.coin-bs{
+  margin: 0
+}
+.coin-ctr {
+  display: flex;
+  margin: 0 50px 0 0;
+  align-content: space-around;
+  background-color: $ticker-bg ;
+  border-radius: 5px;
+  border: 1px $border solid;
+  box-shadow: 0px 6px 10px $header-shadow;
+}
+
+.coin-bs :hover{
+  transform: scale(1.1);
+}
+
+.coin-data-ctr {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.coin-img {
+  height: 70px;
+  width: 70px;
+}
+
+.coin-data {
+  margin: 0;
+  
+}
