@@ -8,7 +8,7 @@ import { login, getProfile, signUp } from './services/apiService'
 import ProtectedRoute from './components/ProtectedRoute'
 import authService from './services/authService'
 import SignUp from './components/SignUp'
-import CoinInfo from './components/CoinInfo'
+import CoinInfo from './components/Coininfo/'
 import ApiData from './services/coinAPI'
 
 
