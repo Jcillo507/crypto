@@ -110,58 +110,78 @@ class CoinInfo extends React.Component {
     const { tweets } = this.state
     const newsDisplay = news.map(news => {
       return (
-        <div key={news._id}>
-          <h3>{news.title}</h3>
-          <p>{news.description}</p>
-          <img src={news.originalImageUrl} />
-          <a href={news.url}>Link to article</a>
+        <div className='hover-ctr'>
+          <a href={news.url}>
+            <div className='info-news-ctr' key={news._id}>
+              <h3>{news.title}</h3>
+              <p>{news.description}</p>
+              <img className='news-img' src={news.originalImageUrl} />
+            </div>
+          </a>
         </div>
       )
     })
     const redsDisplay = reds.map(red => {
       return (
-        <div key={red._id}>
-          <h3>{red.title}</h3>
-          <a href={red.url}>Link to reddit</a>
+        <div className='hover-ctr'>
+        <div className='info-red-ctr' key={red._id}>
+          <a href={red.url}>
+            <h3>{red.title}</h3>
+          </a>
+        </div>
         </div>
       )
     })
     const tweetDisplay = tweets.map(tweet => {
       return (
-        <div key={tweet._id}>
+        <div className='hover-ctr'>
+          <a href={tweet.url}>
+        <div className='info-tweet-ctr' key={tweet._id}>
           <h4>{tweet.text}</h4>
-          <a href={tweet.url}>Link To Tweet</a>
+
+        </div>
+          </a>
         </div>
       )
     })
     return (
       <div className='info-ctr'>
-        <div className='data-ctr'>
-          {this.state.liked ? <button onClick={this.handleUnfavorite}>Unfollow</button> : <button onClick={this.handleFavorite}>like this coin</button>}
-          <h1>{this.data.name}</h1>
-          <p>Current price: ${market_data.current_price.usd}</p>
-          <img src={this.data.image.large} />
-          <p>circulating supply:{market_data.circulating_supply}</p>
-          <p>24h high: {market_data.high_24h.usd}</p>
-          <p> 24 h low: {market_data.low_24h.usd}</p>
-          <p> market cap : {market_data.market_cap_change_24h}</p>
-          <p>market cap percentage change 24h: {market_data.market_cap_change_percentage_24h}</p>
-          <p>Market cap rank : {market_data.market_cap_rank}</p>
-          <p>price change 24h {market_data.price_change_24h}</p>
-          <p>price change % 24H {market_data.price_change_percentage_24h}</p>
-          <p>price change %7d {market_data.price_change_percentage_7d}</p>
-          <p>price change % 14d {market_data.price_change_percentage_14d}</p>
-          <p>price change % 30d {market_data.price_change_percentage_30d}</p>
-          <p>price change % 60d {market_data.price_change_percentage_60d}</p>
-          <p>price change % 200d {market_data.price_change_percentage_200d}</p>
-          <p>price change % 1y {market_data.price_change_percentage_1y}</p>
+        <h1 className='coin-name'>{this.data.name}</h1>
+        <div className='flex-ctr'>
+          <div className='data-ctr'>
+            {this.state.liked ? <button onClick={this.handleUnfavorite}>Unfollow</button> : <button onClick={this.handleFavorite}>like this coin</button>}
+            <p>Current price: ${market_data.current_price.usd}</p>
+            <img className='coin-logo'src={this.data.image.large} />
+            <p>circulating supply:{market_data.circulating_supply}</p>
+            <p>24h high: {market_data.high_24h.usd}</p>
+            <p> 24 h low: {market_data.low_24h.usd}</p>
+            <p> market cap : {market_data.market_cap_change_24h}</p>
+            <p>market cap percentage change 24h: {market_data.market_cap_change_percentage_24h}</p>
+            <p>Market cap rank : {market_data.market_cap_rank}</p>
+            <p>price change 24h {market_data.price_change_24h}</p>
+            <p>price change % 24H {market_data.price_change_percentage_24h}</p>
+            <p>price change %7d {market_data.price_change_percentage_7d}</p>
+            <p>price change % 14d {market_data.price_change_percentage_14d}</p>
+            <p>price change % 30d {market_data.price_change_percentage_30d}</p>
+            <p>price change % 60d {market_data.price_change_percentage_60d}</p>
+            <p>price change % 200d {market_data.price_change_percentage_200d}</p>
+            <p>price change % 1y {market_data.price_change_percentage_1y}</p>
+          </div>
+          <div className='news-base-ctr full-scroll'>
+            <h1 className='info-bx-header'>News</h1>
+            {newsDisplay}
+          </div>
+          <div className='red-twt-ctr'>
+          <div className='news-base-ctr half-scroll'>
+            <h1 className='info-bx-header'>Reddits</h1>
+            {redsDisplay}
+          </div>
+          <div className='news-base-ctr half-scroll'>
+            <h1 className='info-bx-header'>Tweets</h1>
+            {tweetDisplay}
+            </div>
+          </div>
         </div>
-        <h1>Coin News</h1>
-        {newsDisplay}
-        <h1>Coin Reddits</h1>
-        {redsDisplay}
-        <h1>Coin tweets</h1>
-        {tweetDisplay}
       </div>
     )
   }
