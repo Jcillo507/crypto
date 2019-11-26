@@ -86,7 +86,7 @@ class CoinInfo extends React.Component {
       this.setState({ faves: faves })
       const like = () => {
         return this.state.faves.coins.filter(coin => coin.name === this.data.name)
-      }
+      }  
       const likedArray = Array.from(like())
       if (likedArray.length > 0) {
         this.setState({ liked: true })
@@ -110,7 +110,7 @@ class CoinInfo extends React.Component {
     const { tweets } = this.state
     const newsDisplay = news.map(news => {
       return (
-        <div className='hover-ctr'>
+        <div key={news._id}className='hover-ctr'>
           <a href={news.url}>
             <div className='info-news-ctr' key={news._id}>
               <h3>{news.title}</h3>
@@ -123,8 +123,8 @@ class CoinInfo extends React.Component {
     })
     const redsDisplay = reds.map(red => {
       return (
-        <div className='hover-ctr'>
-        <div className='info-red-ctr' key={red._id}>
+        <div className='hover-ctr' key={red._id}>
+        <div className='info-red-ctr'>
           <a href={red.url}>
             <h3>{red.title}</h3>
           </a>
@@ -134,9 +134,9 @@ class CoinInfo extends React.Component {
     })
     const tweetDisplay = tweets.map(tweet => {
       return (
-        <div className='hover-ctr'>
+        <div className='hover-ctr' key={tweet._id}>
           <a href={tweet.url}>
-        <div className='info-tweet-ctr' key={tweet._id}>
+        <div className='info-tweet-ctr' >
           <h4>{tweet.text}</h4>
 
         </div>
@@ -149,7 +149,7 @@ class CoinInfo extends React.Component {
         <h1 className='coin-name'>{this.data.name}</h1>
         <div className='flex-ctr'>
           <div className='data-ctr'>
-            {this.state.liked ? <button onClick={this.handleUnfavorite}>Unfollow</button> : <button onClick={this.handleFavorite}>like this coin</button>}
+            {this.state.liked ? <button onClick={this.handleUnfavorite}>Unfollow</button> : <button onClick={this.handleFavorite}>Follow</button>}
             <p>Current price: ${market_data.current_price.usd}</p>
             <img className='coin-logo'src={this.data.image.large} />
             <p>circulating supply:{market_data.circulating_supply}</p>
@@ -159,13 +159,13 @@ class CoinInfo extends React.Component {
             <p>market cap percentage change 24h: {market_data.market_cap_change_percentage_24h}</p>
             <p>Market cap rank : {market_data.market_cap_rank}</p>
             <p>price change 24h {market_data.price_change_24h}</p>
-            <p>price change % 24H {market_data.price_change_percentage_24h}</p>
-            <p>price change %7d {market_data.price_change_percentage_7d}</p>
-            <p>price change % 14d {market_data.price_change_percentage_14d}</p>
-            <p>price change % 30d {market_data.price_change_percentage_30d}</p>
-            <p>price change % 60d {market_data.price_change_percentage_60d}</p>
-            <p>price change % 200d {market_data.price_change_percentage_200d}</p>
-            <p>price change % 1y {market_data.price_change_percentage_1y}</p>
+            <p>price change  24H {market_data.price_change_percentage_24h}%</p>
+            <p>price change  7d {market_data.price_change_percentage_7d}%</p>
+            <p>price change  14d {market_data.price_change_percentage_14d}%</p>
+            <p>price change  30d {market_data.price_change_percentage_30d}%</p>
+            <p>price change  60d {market_data.price_change_percentage_60d}%</p>
+            <p>price change  200d {market_data.price_change_percentage_200d}%</p>
+            <p>price change  1y {market_data.price_change_percentage_1y}%</p>
           </div>
           <div className='news-base-ctr full-scroll'>
             <h1 className='info-bx-header'>News</h1>

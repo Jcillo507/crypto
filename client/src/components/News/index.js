@@ -28,7 +28,7 @@ class News extends React.Component{
   
     const display = data.map(article => {
       return (
-        <div className="news-ctr">
+        <div  key={article._id} className="news-ctr">
           <a href={article.url}><h3>{article.title}</h3></a>
           <p className="news-desc">{article.description}</p>
           <img className="news-img" src={article.originalImageUrl}/>

@@ -16,7 +16,7 @@ class CryptoList extends React.Component {
   componentDidMount = async () => {
     await this.coinCall()
   }
-  
+
   coinCall = async () => {
     try {
       const data = await ApiData()
@@ -28,24 +28,25 @@ class CryptoList extends React.Component {
       throw error
     }
   }
-  
+
   render() {
     console.log(this.props)
     const coinsArray = Array.from(this.state.data)
     const coins = coinsArray.map(coin => (
-      <div key={coin._id}><Link
-      key={coin.id}
-      to={{
-        pathname: `/CoinInfo/${coin.id}`,
-        state: { data: coin, userId: this.props.userId }
-      }}
-      data={coin}>
-        <Coin
-          coinId={coin.name}
-          price={coin.market_data.current_price.usd}
-          image={coin.image.small}
-        />
-      </Link>
+      <div key={coin.id}>
+        <Link
+          
+          to={{
+            pathname: `/CoinInfo/${coin.name}`,
+            state: { data: coin, userId: this.props.userId }
+          }}
+          >
+          <Coin
+            coinId={coin.name}
+            price={coin.market_data.current_price.usd}
+            image={coin.image.small}
+          />
+        </Link>
       </div>
     )
     )

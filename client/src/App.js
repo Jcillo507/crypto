@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.scss'
 import Home from './components/Home/'
-import Dashboard from './components/Dashboard'
+import Dashboard from './components/Dashboard/'
 import Login from './components/Login'
 import { Route, Link } from 'react-router-dom'
 import { login, getProfile, signUp } from './services/apiService'
@@ -122,7 +122,7 @@ class App extends Component {
               <div className="links">
                 <Link to='/dashboard'>Dashboard</Link>
 
-                <Link onClick={this.signOutUser}> Sign out</Link>
+                <Link to='/' onClick={this.signOutUser}> Sign out</Link>
               </div>
             }
           </div>
