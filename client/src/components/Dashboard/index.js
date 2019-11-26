@@ -1,5 +1,6 @@
 import React from 'react'
-import { getFaves, getProfile } from '../services/apiService'
+import { getFaves, getProfile } from '../../services/apiService'
+import './dashboard.scss'
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -49,8 +50,8 @@ class Dashboard extends React.Component {
     const name = (user.name !== undefined) ? user.name : ''
     return (
 
-      <div>
-        <h1>Dashboard</h1>
+      <div className='dashboard-ctr'>
+        <h1 >Dashboard</h1>
         <p>{`Welcome back ${name}`}</p>
         {faveDisplay}
       </div>

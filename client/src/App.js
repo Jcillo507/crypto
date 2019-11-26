@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
-import './App.css'
-import Home from './components/Home'
-import Dashboard from './components/Dashboard'
+import './App.scss'
+import Home from './components/Home/'
+import Dashboard from './components/Dashboard/'
 import Login from './components/Login'
 import { Route, Link } from 'react-router-dom'
 import { login, getProfile, signUp } from './services/apiService'
 import ProtectedRoute from './components/ProtectedRoute'
 import authService from './services/authService'
 import SignUp from './components/SignUp'
-import CoinInfo from './components/CoinInfo'
-// import CryptoList from './components/CryptoList'
+import CoinInfo from './components/Coininfo/'
 import ApiData from './services/coinAPI'
 
 
@@ -18,7 +17,7 @@ class App extends Component {
     super(props)
     this.state = {
       isSignedIn: false,
-      user: {}, 
+      user: {},
       userId: [],
       data: {},
     }
@@ -44,13 +43,13 @@ class App extends Component {
       console.log('Issue fetching token')
     }
   }
-    coinCall = async () => {
+  coinCall = async () => {
     try {
       const data = await ApiData()
       this.setState({
         data: data
       })
-    } 
+    }
     catch (error) {
       throw error
     }
@@ -66,8 +65,8 @@ class App extends Component {
       this.setState({
         isSignedIn: true,
         user: user,
-        userId: user.id 
-      }) 
+        userId: user.id
+      })
     } catch (e) {
       throw e
     }
@@ -83,11 +82,11 @@ class App extends Component {
       // isSignedIn to true
       this.setState({
         isSignedIn: true,
-        user: user, 
+        user: user,
         userId: user.id
-        
+
       })
-      
+
     } catch (e) {
       throw e
     }
@@ -106,30 +105,31 @@ class App extends Component {
 
     return (
       <div className='App'>
-        <nav>
+        <nav className='App-header'>
           <div>
             <Link to='/'>Home</Link>
           </div>
+          <div className='nav-section'>
+            {!isSignedIn &&
+              <div className="links">
+                <Link to='/login'>Login</Link>
 
-          {!isSignedIn &&
-            <div className='nav-section'>
-              <Link to='/login'>Login</Link>
+                <Link to='/signup'>Sign Up</Link>
+              </div>
+            }
 
-              <Link to='/signup'>Sign Up</Link>
-            </div>
-          }
+            {isSignedIn &&
+              <div className="links">
+                <Link to='/dashboard'>Dashboard</Link>
 
-          {isSignedIn &&
-            <div className='nav-section'>
-              <Link to='/dashboard'>Dashboard</Link>
-
-              <button onClick={this.signOutUser}> Sign out</button>
-            </div>
-          }
+                <Link to='/' onClick={this.signOutUser}> Sign out</Link>
+              </div>
+            }
+          </div>
         </nav>
-         
+
         <main>
-        <Route exact path='/' component={(props)=><Home {...props} coins={this.state.data} userId={this.state.userId}/>}/>
+          <Route exact path='/' component={(props) => <Home {...props} coins={this.state.data} userId={this.state.userId} />} />
 
           {/* <ProtectedRoute> to "protect" our <Dashboard> component  */}
           <ProtectedRoute
@@ -161,12 +161,12 @@ class App extends Component {
                 />
             }
           />
-          
-            <Route
-              exact path={`/CoinInfo/:id`}
-              exact render={(props) => <CoinInfo {...props} data={data} user={user}/>}
-            />
-          
+
+          <Route
+            exact path={`/CoinInfo/:id`}
+            exact render={(props) => <CoinInfo {...props} data={data} user={user} />}
+          />
+
         </main>
       </div>
     )
