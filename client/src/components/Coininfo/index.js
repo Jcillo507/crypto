@@ -110,7 +110,7 @@ class CoinInfo extends React.Component {
     const { tweets } = this.state
     const newsDisplay = news.map(news => {
       return (
-        <div key={news._id}className='hover-ctr'>
+        <div key={news._id} className='hover-ctr'>
           <a href={news.url}>
             <div className='info-news-ctr' key={news._id}>
               <h3>{news.title}</h3>

@@ -102,7 +102,6 @@ class App extends Component {
 
   render() {
     const { isSignedIn, user, data } = this.state
-
     return (
       <div className='App'>
         <nav className='App-header'>
@@ -136,6 +135,7 @@ class App extends Component {
             path='/dashboard'
             user={user}
             component={Dashboard}
+            coins={data}
           />
 
           <Route

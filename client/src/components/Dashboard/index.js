@@ -1,5 +1,10 @@
 import React from 'react'
 import { getFaves, getProfile } from '../../services/apiService'
+import { Route, Link } from 'react-router-dom'
+import CoinInfo from '../Coininfo/'
+import ApiData from '../../services/coinAPI'
+
+
 import './dashboard.scss'
 
 class Dashboard extends React.Component {
@@ -8,7 +13,7 @@ class Dashboard extends React.Component {
     this.state = {
       faves: { coins: [] },
       id: [],
-      coins: [],
+      datas: [],
     }
   }
   componentDidMount = async () => {
@@ -26,25 +31,53 @@ class Dashboard extends React.Component {
     try {
       console.log("called")
       const faves = await getFaves(this.props.user.id)
+      const data = await ApiData()
       console.log(faves)
       this.setState({
         faves: faves,
-        id: this.props.user.id
+        id: this.props.user.id,
+        datas: data
       })
     } catch (error) {
       throw error
     }
   }
 
-
   render() {
     const { user } = this.props
-    console.log(this.state.faves)
     const { coins } = this.state.faves
+    const { datas } = this.state
+    const info = datas
+    console.log(coins)
+    console.log(this.state.datas)
+    const faveFilter = datas.filter(async data => data.name == 'Bitcoin')
+    console.log('datas', faveFilter)
+
+    const faveFilter1 = coins.filter(async coin=> coin.name === await datas.name)
+    console.log('coins', faveFilter1)
+    // debugger;
+    
+    const filterFave = datas.filter(async (el)=>{
+      return coins.some( (f) =>{
+        return f.name===el.name
+      })
+    })
+    console.log("filter faves", filterFave)
+  
 
     const faveDisplay = coins.map(coin => (
       <div key={coin.id}>
-        <p>{coin.name}</p>
+        <Link
+          to={{
+            pathname: `/CoinInfo/${coin.name}`,
+            // state: { data: , userId: this.props.userId }
+          }}
+        >
+          {coin.name}</Link>
+        <Route
+          exact path={`/CoinInfo/:id`}
+          exact render={(props) => <CoinInfo {...props} data={coin} user={user} />}
+        />
       </div>))
 
     const name = (user.name !== undefined) ? user.name : ''
