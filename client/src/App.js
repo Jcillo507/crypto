@@ -45,6 +45,7 @@ class App extends Component {
   }
   coinCall = async () => {
     try {
+      console.log('called ccall app48', this.state.data)
       const data = await ApiData()
       this.setState({
         data: data
@@ -102,7 +103,6 @@ class App extends Component {
 
   render() {
     const { isSignedIn, user, data } = this.state
-
     return (
       <div className='App'>
         <nav className='App-header'>
@@ -136,6 +136,8 @@ class App extends Component {
             path='/dashboard'
             user={user}
             component={Dashboard}
+            coins={data}
+            data={data}
           />
 
           <Route

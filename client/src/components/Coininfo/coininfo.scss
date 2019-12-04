@@ -1,7 +1,7 @@
 @import '../../base.scss';
 
 .info-bx-header {
-  position: fixed;
+  
   background-color:$scroll-title;
   z-index: 1;
 }
@@ -17,6 +17,7 @@
 
 .coin-name {
   align-self: center;
+  margin:10px;
 }
 
 .flex-ctr {
@@ -128,4 +129,26 @@
   margin: 0 20px ;
   box-shadow: 0px 6px 10px $header-shadow;
   border-radius: 5px;
+}
+
+.info-datapts{
+  margin:10px;
+  color: $coin-info-text;
+}
+
+button {
+
+}
+.info-button{
+    outline: 0;
+    height:45px;
+    width:150px;
+    font-size:25px;
+  }
+  
+  .follow{
+background-color: plum;
+}
+.unfollow{
+  background-color: green;
 }

@@ -1,9 +1,31 @@
-.home-bs{
+@import '../../base.scss';
+
+.home-bs {
   margin-top: 7vh;
+// display: flex;
+// flex-direction: column;
+// align-items: center;
 }
 
 .home-ctr {
   display: flex;
   flex-direction: column;
-  margin: 30px 90px 90px 90px;
+  align-items: center;
+   
+  // margin: 30px 90px 90px 90px;
+}
+
+.home-title {
+  margin: 10px;
+  text-align: center;
+}
+
+.coin-home-ctr {
+  // background-color: $scroll-bg;
+  padding: 10px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  overflow: auto;
+  width: 90%;
 }
