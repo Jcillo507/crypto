@@ -36,7 +36,7 @@ class News extends React.Component{
         </div>
       )
     })
-    return(<div>{display}</div>)
+    return(<div className='news-bs-ctr'>{display}</div>)
   }
 }
 

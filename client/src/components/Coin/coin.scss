@@ -3,9 +3,10 @@
 .coin-bs{
   margin: 0
 }
-.coin-ctr {
+
+.coin-ctr{
   display: flex;
-  margin: 0 50px 0 0;
+  margin: 0 25px;
   align-content: space-around;
   background-color: $ticker-bg ;
   border-radius: 5px;
@@ -23,11 +24,14 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 10px 20px;
+  margin: 10px;
 }
 
 .coin-img {
   height: 70px;
   width: 70px;
+  align-self:center;
+  margin-left: 3px;
 }
 
 .coin-data {

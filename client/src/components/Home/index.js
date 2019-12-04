@@ -13,7 +13,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className='home-bs'>
-        <h1>CryptoNews</h1>
+        <h1 className='home-title'>CryptoNews</h1>
         <div className='home-ctr'>
           <div className='coin-home-ctr'> 
           <CryptoList {...this.props} />

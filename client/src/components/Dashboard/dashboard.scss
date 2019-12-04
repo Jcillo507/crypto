@@ -1,7 +1,19 @@
 @import '../../base.scss';
 
 .dashboard-ctr{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
   margin-top:8vh;
-  margin-left: 20px;
   font-size: 20px;
+  
+}
+.db-title{
+  margin:20px;
+}
+
+.db-welcome{
+  margin:20px;
 }

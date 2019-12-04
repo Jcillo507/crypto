@@ -124,24 +124,24 @@ class CoinInfo extends React.Component {
     const redsDisplay = reds.map(red => {
       return (
         <div className='hover-ctr' key={red._id}>
-        <div className='info-red-ctr'>
           <a href={red.url}>
+        <div className='info-red-ctr'>
             <h3>{red.title}</h3>
-          </a>
         </div>
+          </a>
         </div>
       )
     })
     const tweetDisplay = tweets.map(tweet => {
       return (
-        <div className='hover-ctr' key={tweet._id}>
           <a href={tweet.url}>
+        <div className='hover-ctr' key={tweet._id}>
         <div className='info-tweet-ctr' >
           <h4>{tweet.text}</h4>
 
         </div>
-          </a>
         </div>
+          </a>
       )
     })
     return (
@@ -149,23 +149,26 @@ class CoinInfo extends React.Component {
         <h1 className='coin-name'>{this.data.name}</h1>
         <div className='flex-ctr'>
           <div className='data-ctr'>
-            {this.state.liked ? <button onClick={this.handleUnfavorite}>Unfollow</button> : <button onClick={this.handleFavorite}>Follow</button>}
-            <p>Current price: ${market_data.current_price.usd}</p>
+            <p className='info-datapts'>Current price: ${market_data.current_price.usd}</p>
             <img className='coin-logo'src={this.data.image.large} />
-            <p>circulating supply:{market_data.circulating_supply}</p>
-            <p>24h high: {market_data.high_24h.usd}</p>
-            <p> 24 h low: {market_data.low_24h.usd}</p>
-            <p> market cap : {market_data.market_cap_change_24h}</p>
-            <p>market cap percentage change 24h: {market_data.market_cap_change_percentage_24h}</p>
-            <p>Market cap rank : {market_data.market_cap_rank}</p>
-            <p>price change 24h {market_data.price_change_24h}</p>
-            <p>price change  24H {market_data.price_change_percentage_24h}%</p>
-            <p>price change  7d {market_data.price_change_percentage_7d}%</p>
-            <p>price change  14d {market_data.price_change_percentage_14d}%</p>
-            <p>price change  30d {market_data.price_change_percentage_30d}%</p>
-            <p>price change  60d {market_data.price_change_percentage_60d}%</p>
-            <p>price change  200d {market_data.price_change_percentage_200d}%</p>
-            <p>price change  1y {market_data.price_change_percentage_1y}%</p>
+            <p className='info-datapts'>Market cap rank : {market_data.market_cap_rank}</p>
+            <p className='info-datapts'>Circulating supply:{market_data.circulating_supply}</p>
+            <p className='info-datapts'>24h High: {market_data.high_24h.usd}</p>
+            <p className='info-datapts'>24h Low: {market_data.low_24h.usd}</p>
+            <p className='info-datapts'>Market Cap : {market_data.market_cap_change_24h}</p>
+            <p className='info-datapts'>Market Cap % change 24h: {market_data.market_cap_change_percentage_24h}</p>
+            <p className='info-datapts'>Price change 24h {market_data.price_change_24h}</p>
+            <p className='info-datapts'>Price change  24H {market_data.price_change_percentage_24h}%</p>
+            <p className='info-datapts'>Price change  7d {market_data.price_change_percentage_7d}%</p>
+            <p className='info-datapts'>Price change  14d {market_data.price_change_percentage_14d}%</p>
+            <p className='info-datapts'>Price change  30d {market_data.price_change_percentage_30d}%</p>
+            <p className='info-datapts'>Price change  60d {market_data.price_change_percentage_60d}%</p>
+            <p className='info-datapts'>Price change  200d {market_data.price_change_percentage_200d}%</p>
+            <p className='info-datapts'>Price change  1y {market_data.price_change_percentage_1y}%</p>
+            {this.state.liked ? 
+            <button className='info-button unfollow'onClick={this.handleUnfavorite}>Unfollow</button> 
+            : 
+            <button className='info-button follow'onClick={this.handleFavorite}>Follow</button>}
           </div>
           <div className='news-base-ctr full-scroll'>
             <h1 className='info-bx-header'>News</h1>
