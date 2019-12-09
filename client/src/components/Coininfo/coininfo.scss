@@ -1,7 +1,8 @@
 @import '../../base.scss';
 
 .info-bx-header {
-  
+  text-align: center;
+  width: 100%;
   background-color:$scroll-title;
   z-index: 1;
 }
@@ -17,7 +18,8 @@
 
 .coin-name {
   align-self: center;
-  margin:10px;
+  margin: 10px;
+  font-size: 40px;
 }
 
 .flex-ctr {
@@ -35,6 +37,7 @@
   text-align: center;
   height: 80vh;
   box-sizing: border-box;
+  border: 20px solid $scroll-bg
 }
 
 .hover-ctr {
@@ -58,7 +61,7 @@
   background-color: $info-bg;
   box-shadow: 0px 6px 10px $header-shadow;
   border-radius: 5px;
-  height: 400px;
+  // height: 350px;
   width: 400px;
   text-align: center;
   margin: 30px;
@@ -86,9 +89,10 @@
   min-width: 300px;
   max-height: 200px;
   min-height: 200px;
+  margin: 5px;
 }
 
-.info-red-ctr {
+.info-rt-ctr {
   background-color: $info-bg;
   box-shadow: 0px 6px 10px $header-shadow;
   border-radius: 5px;
@@ -112,7 +116,6 @@
 }
 
 .red-twt-ctr {
-  
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -136,9 +139,6 @@
   color: $coin-info-text;
 }
 
-button {
-
-}
 .info-button{
     outline: 0;
     height:45px;
@@ -146,9 +146,9 @@ button {
     font-size:25px;
   }
   
-  .follow{
-background-color: plum;
-}
-.unfollow{
-  background-color: green;
-}
+//   .follow{
+// background-color: plum;
+// }
+// .unfollow{
+//   background-color: green;
+// }

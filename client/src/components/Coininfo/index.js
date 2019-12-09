@@ -28,6 +28,7 @@ class CoinInfo extends React.Component {
       throw error
     }
   }
+
   redCall = async () => {
     try {
       const reds = await CoinReddit(this.data.id)
@@ -38,6 +39,7 @@ class CoinInfo extends React.Component {
       throw error();
     }
   }
+
   tweetCall = async () => {
     try {
       const tweets = await CoinTweet(this.data.id)
@@ -48,18 +50,16 @@ class CoinInfo extends React.Component {
       throw error
     }
   }
+
   handleFavorite = async e => {
     e.preventDefault()
     const id = this.props.user.id
     const restObj = {
       name: this.data.name
     }
-    console.log(this.data.name)
-
     try {
       const createdCoin = await addCoin(id, restObj)
       this.setState({ liked: true })
-      console.log(createdCoin)
       return createdCoin
     } catch (error) {
       console.error(error)
@@ -80,19 +80,20 @@ class CoinInfo extends React.Component {
       throw error
     }
   }
+
   showFaves = async () => {
     try {
       const faves = await getFaves(this.props.user.id)
       this.setState({ faves: faves })
       const like = () => {
         return this.state.faves.coins.filter(coin => coin.name === this.data.name)
-      }  
+      }
       const likedArray = Array.from(like())
       if (likedArray.length > 0) {
         this.setState({ liked: true })
       }
-
-    } catch (error) {
+    } 
+      catch (error) {
       throw error
     }
   }
@@ -103,6 +104,7 @@ class CoinInfo extends React.Component {
     await this.tweetCall()
     await this.showFaves()
   }
+
   render() {
     const { market_data } = this.props.location.state.data
     const { news } = this.state
@@ -125,23 +127,22 @@ class CoinInfo extends React.Component {
       return (
         <div className='hover-ctr' key={red._id}>
           <a href={red.url}>
-        <div className='info-red-ctr'>
-            <h3>{red.title}</h3>
-        </div>
+            <div className='info-rt-ctr'>
+              <h3>{red.title}</h3>
+            </div>
           </a>
         </div>
       )
     })
     const tweetDisplay = tweets.map(tweet => {
       return (
-          <a href={tweet.url}>
-        <div className='hover-ctr' key={tweet._id}>
-        <div className='info-tweet-ctr' >
-          <h4>{tweet.text}</h4>
-
-        </div>
-        </div>
-          </a>
+        <a href={tweet.url}>
+          <div className='hover-ctr' key={tweet._id}>
+            <div className='info-rt-ctr' >
+              <h4>{tweet.text}</h4>
+            </div>
+          </div>
+        </a>
       )
     })
     return (
@@ -149,39 +150,40 @@ class CoinInfo extends React.Component {
         <h1 className='coin-name'>{this.data.name}</h1>
         <div className='flex-ctr'>
           <div className='data-ctr'>
+            <h2>Market Data</h2>
             <p className='info-datapts'>Current price: ${market_data.current_price.usd}</p>
-            <img className='coin-logo'src={this.data.image.large} />
-            <p className='info-datapts'>Market cap rank : {market_data.market_cap_rank}</p>
-            <p className='info-datapts'>Circulating supply:{market_data.circulating_supply}</p>
+            <img className='coin-logo' src={this.data.image.large} />
+            <p className='info-datapts'>Market Cap Rank : {market_data.market_cap_rank}</p>
+            <p className='info-datapts'>Circulating Supply:{market_data.circulating_supply}</p>
             <p className='info-datapts'>24h High: {market_data.high_24h.usd}</p>
             <p className='info-datapts'>24h Low: {market_data.low_24h.usd}</p>
-            <p className='info-datapts'>Market Cap : {market_data.market_cap_change_24h}</p>
-            <p className='info-datapts'>Market Cap % change 24h: {market_data.market_cap_change_percentage_24h}</p>
-            <p className='info-datapts'>Price change 24h {market_data.price_change_24h}</p>
-            <p className='info-datapts'>Price change  24H {market_data.price_change_percentage_24h}%</p>
-            <p className='info-datapts'>Price change  7d {market_data.price_change_percentage_7d}%</p>
-            <p className='info-datapts'>Price change  14d {market_data.price_change_percentage_14d}%</p>
-            <p className='info-datapts'>Price change  30d {market_data.price_change_percentage_30d}%</p>
-            <p className='info-datapts'>Price change  60d {market_data.price_change_percentage_60d}%</p>
-            <p className='info-datapts'>Price change  200d {market_data.price_change_percentage_200d}%</p>
-            <p className='info-datapts'>Price change  1y {market_data.price_change_percentage_1y}%</p>
-            {this.state.liked ? 
-            <button className='info-button unfollow'onClick={this.handleUnfavorite}>Unfollow</button> 
-            : 
-            <button className='info-button follow'onClick={this.handleFavorite}>Follow</button>}
+            <p className='info-datapts'>Market Cap Change 24H: {market_data.market_cap_change_24h}</p>
+            <p className='info-datapts'>Market Cap % Change 24h: {market_data.market_cap_change_percentage_24h}</p>
+            <p className='info-datapts'>Price Change 24H: {market_data.price_change_24h}</p>
+            <p className='info-datapts'>Price Change  24H: {market_data.price_change_percentage_24h}%</p>
+            <p className='info-datapts'>Price Change  7d: {market_data.price_change_percentage_7d}%</p>
+            <p className='info-datapts'>Price Change  14d: {market_data.price_change_percentage_14d}%</p>
+            <p className='info-datapts'>Price Change  30d: {market_data.price_change_percentage_30d}%</p>
+            <p className='info-datapts'>Price Change  60d: {market_data.price_change_percentage_60d}%</p>
+            <p className='info-datapts'>Price Change  200d: {market_data.price_change_percentage_200d}%</p>
+            <p className='info-datapts'>Price Change  1y: {market_data.price_change_percentage_1y}%</p>
+            {this.state.liked ?
+              <button className='info-button unfollow' onClick={this.handleUnfavorite}>Unfollow</button>
+              :
+              <button className='info-button follow' onClick={this.handleFavorite}>Follow</button>}
           </div>
           <div className='news-base-ctr full-scroll'>
-            <h1 className='info-bx-header'>News</h1>
+            <h2 className='info-bx-header'>News</h2>
             {newsDisplay}
           </div>
           <div className='red-twt-ctr'>
-          <div className='news-base-ctr half-scroll'>
-            <h1 className='info-bx-header'>Reddits</h1>
-            {redsDisplay}
-          </div>
-          <div className='news-base-ctr half-scroll'>
-            <h1 className='info-bx-header'>Tweets</h1>
-            {tweetDisplay}
+            <div className='news-base-ctr half-scroll'>
+              <h2 className='info-bx-header'>Reddits</h2>
+              {redsDisplay}
+            </div>
+            <div className='news-base-ctr half-scroll'>
+              <h2 className='info-bx-header'>Tweets</h2>
+              {tweetDisplay}
             </div>
           </div>
         </div>

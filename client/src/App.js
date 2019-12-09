@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 import './App.scss'
 import Home from './components/Home/'
 import Dashboard from './components/Dashboard/'
-import Login from './components/Login'
+import Login from './components/Login/'
 import { Route, Link } from 'react-router-dom'
 import { login, getProfile, signUp } from './services/apiService'
 import ProtectedRoute from './components/ProtectedRoute'
 import authService from './services/authService'
-import SignUp from './components/SignUp'
+import SignUp from './components/SignUp/'
 import CoinInfo from './components/Coininfo/'
 import ApiData from './services/coinAPI'
+import Footer from './components/Footer/'
 
 
 class App extends Component {
@@ -130,13 +131,13 @@ class App extends Component {
 
         <main>
           <Route exact path='/' component={(props) => <Home {...props} coins={this.state.data} userId={this.state.userId} />} />
+          <Footer />
 
           {/* <ProtectedRoute> to "protect" our <Dashboard> component  */}
           <ProtectedRoute
             path='/dashboard'
             user={user}
             component={Dashboard}
-            coins={data}
             data={data}
           />
 
@@ -165,11 +166,12 @@ class App extends Component {
           />
 
           <Route
-            exact path={`/CoinInfo/:id`}
-            exact render={(props) => <CoinInfo {...props} data={data} user={user} />}
+            path={`/CoinInfo/:id`}
+            render={(props) => <CoinInfo {...props} user={user} />}
           />
 
         </main>
+        
       </div>
     )
   }

@@ -1,9 +1,7 @@
 import React from 'react'
 import { getFaves, getProfile } from '../../services/apiService'
-import { Route, Link } from 'react-router-dom'
-import CoinInfo from '../Coininfo/'
+import { Link } from 'react-router-dom'
 import ApiData from '../../services/coinAPI'
-import CryptoList from '../CryptoList/'
 import Coin from '../Coin/'
 
 
@@ -59,12 +57,10 @@ class Dashboard extends React.Component {
     const faveDisplay = filterFave.map(coin => (
       <div key={coin.id}>
         <Link
-
           to={{
             pathname: `/CoinInfo/${coin.name}`,
             state: { data: coin, userId: this.props.userId }
-          }}
-        >
+          }}>
           <Coin
             coinId={coin.name}
             price={coin.market_data.current_price.usd}
