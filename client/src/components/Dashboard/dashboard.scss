@@ -1,6 +1,8 @@
 @import '../../base.scss';
 
 .dashboard-ctr{
+  height: 100vh;
+  width: 100vw;
   display:flex;
   flex-direction: column;
   justify-content: center;
@@ -8,12 +10,13 @@
   align-items: center;
   margin-top:8vh;
   font-size: 20px;
+  margin: 0 auto;
   
 }
 .db-title{
-  margin:20px;
+  // margin:20px;
 }
 
 .db-welcome{
-  margin:20px;
+  // margin:20px;
 }

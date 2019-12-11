@@ -1,9 +1,14 @@
 @import '../../base.scss';
 
 .list-ctr {
-  display: flex;
-  flex-direction: row;
   margin: 0;
   padding: 0;
- 
 }
+ .ticker {
+   display: flex;
+   flex-direction: row;
+ }
+ .non-ticker{
+   display: flex;
+   flex-direction: column;
+ }

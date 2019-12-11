@@ -11,6 +11,7 @@ import SignUp from './components/SignUp/'
 import CoinInfo from './components/Coininfo/'
 import ApiData from './services/coinAPI'
 import Footer from './components/Footer/'
+import CoinList from './components/CoinList/'
 
 
 class App extends Component {
@@ -109,6 +110,7 @@ class App extends Component {
         <nav className='App-header'>
           <div>
             <Link to='/'>Home</Link>
+            <Link to='/coinlist'>Coins</Link>
           </div>
           <div className='nav-section'>
             {!isSignedIn &&
@@ -131,6 +133,8 @@ class App extends Component {
 
         <main>
           <Route exact path='/' component={(props) => <Home {...props} coins={this.state.data} userId={this.state.userId} />} />
+          <Route exact path='/coinlist' component={(props) => 
+          <CoinList {...props} coins={this.state.data} userId={this.state.userId} />} />
           <Footer />
 
           {/* <ProtectedRoute> to "protect" our <Dashboard> component  */}

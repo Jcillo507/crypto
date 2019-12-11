@@ -10,11 +10,15 @@ class CryptoList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: {}
+      data: {},
+      className:[],
+
     }
   }
   componentDidMount = async () => {
     await this.coinCall()
+   this.setClass()
+
   }
 
   coinCall = async () => {
@@ -28,8 +32,16 @@ class CryptoList extends React.Component {
       throw error
     }
   }
-
+ 
+setClass= ()=>{
+  if(this.props.match.path==='/'){
+   this.setState({className:'ticker'})
+ }
+else{
+  this.setState({className:'non-ticker'})
+}}
   render() {
+    console.log(this.props)
     const coinsArray = Array.from(this.state.data)
     const coins = coinsArray.map(coin => (
       <div key={coin.id}>
@@ -50,8 +62,8 @@ class CryptoList extends React.Component {
     )
     )
     return (
-      <div>
-        <ul className='list-ctr'>{coins}</ul>
+      <div className='list-ctr'>
+        <ul className={this.state.className}>{coins}</ul>
       </div>
     )
   }
