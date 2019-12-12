@@ -8,13 +8,15 @@ class Home extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: {}
+      data: {},
+      path:[],
     }
   }
   render() {
+    console.log(this.props, 'home')
     return (
       <div className='home-bs'>
-        {/* <h1 className='home-title'>CryptoNews</h1> */}
+
         <div className='home-ctr'>
           <div className='coin-home-ctr'> 
           <CryptoList {...this.props} />

@@ -5,18 +5,21 @@
   width: 100vw;
   display:flex;
   flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  margin-top:8vh;
-  font-size: 20px;
-  margin: 0 auto;
-  
+}
+.fave-display{
+      display: flex;
+      flex-direction: column;
+      flex-wrap:wrap;
+      flex-flow: wrap;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
 }
 .db-title{
-  // margin:20px;
-}
+  margin-top:8vh;
+  margin-bottom: 40px;
+ text-align: center;
+  font-size: 30px;
 
-.db-welcome{
-  // margin:20px;
+
 }

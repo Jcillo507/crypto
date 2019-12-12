@@ -37,7 +37,7 @@ class Dashboard extends React.Component {
         id: this.props.user.id,
         data: data
       })
-    
+
     } catch (error) {
       throw error
     }
@@ -66,7 +66,7 @@ class Dashboard extends React.Component {
             price={coin.market_data.current_price.usd}
             image={coin.image.small}
           /><br></br>
-         
+
         </Link>
       </div>
     )
@@ -74,11 +74,16 @@ class Dashboard extends React.Component {
 
     const name = (user.name !== undefined) ? user.name : ''
     return (
-
+      <div>
+          <p className='db-title'>{`Welcome back ${name}`}</p>
       <div className='dashboard-ctr'>
-        <h1 className='db-title'>Dashboard</h1>
-        <p className='db-welcome'>{`Welcome back ${name}`}</p>
-        {faveDisplay}
+        <div className='dashboard-text'>
+          {/* <h1 className='db-title'>Dashboard</h1> */}
+        </div>
+        <div className='fave-display'>
+          {faveDisplay}
+        </div>
+      </div>
       </div>
     )
   }

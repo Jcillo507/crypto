@@ -47,7 +47,6 @@ class App extends Component {
   }
   coinCall = async () => {
     try {
-      console.log('called ccall app48', this.state.data)
       const data = await ApiData()
       this.setState({
         data: data

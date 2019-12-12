@@ -11,4 +11,7 @@
  .non-ticker{
    display: flex;
    flex-direction: column;
+   flex-wrap:wrap;
+  margin:100px;
+  flex-flow: wrap;
  }
