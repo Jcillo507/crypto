@@ -1,5 +1,10 @@
-.footer-ctr{
-  position: sticky;
-  bottom: 10vh;
- z-index: 2;
+@import '../../base.scss';
+
+.footer-ctr {
+  position: fixed;
+  width: 100vw;
+  height: 6vh;
+  bottom: 0vh;
+  background-color: $footer-bg;
+
 }

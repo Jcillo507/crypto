@@ -28,7 +28,7 @@
   position: fixed;
   width: 100%;
   background-color: $header-color;
-  height: 6vh;
+  height: 7vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -80,7 +80,12 @@ a {
   }
 
 }
-
+.right{
+  margin-right: 2vw;
+}
+.left{
+  margin-left: 2vw;
+}
 nav button,
 nav a {
   color: $link-font;

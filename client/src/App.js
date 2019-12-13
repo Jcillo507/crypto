@@ -107,13 +107,13 @@ class App extends Component {
     return (
       <div className='App'>
         <nav className='App-header'>
-          <div>
+          <div className="left">
             <Link to='/'>Home</Link>
             <Link to='/coinlist'>Coins</Link>
           </div>
           <div className='nav-section'>
             {!isSignedIn &&
-              <div className="links">
+              <div className="right">
                 <Link to='/login'>Login</Link>
 
                 <Link to='/signup'>Sign Up</Link>
@@ -121,7 +121,7 @@ class App extends Component {
             }
 
             {isSignedIn &&
-              <div className="links">
+              <div className="right">
                 <Link to='/dashboard'>Dashboard</Link>
 
                 <Link to='/' onClick={this.signOutUser}> Sign out</Link>
@@ -130,11 +130,10 @@ class App extends Component {
           </div>
         </nav>
 
+          <Footer />
         <main>
           <Route exact path='/' component={(props) => <Home {...props} coins={this.state.data} userId={this.state.userId} />} />
-          <Route exact path='/coinlist' component={(props) => 
-          <CoinList {...props} coins={this.state.data} userId={this.state.userId} />} />
-          <Footer />
+          <Route exact path='/coinlist' component={(props) => <CoinList {...props} coins={this.state.data} userId={this.state.userId} />} />
 
           {/* <ProtectedRoute> to "protect" our <Dashboard> component  */}
           <ProtectedRoute
