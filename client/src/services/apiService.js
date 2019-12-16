@@ -1,5 +1,5 @@
 import axios from 'axios'
-const BASE_URL = 'http://localhost:4567'
+const BASE_URL = 'https://jccn.herokuapp.com/'
 
 // get token from localStorage (if it exists)
 const JWT_TOKEN = localStorage.getItem('token')
