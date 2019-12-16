@@ -8,6 +8,7 @@ const appRouter = require('./routers/appRouter')
 const { authorized } = require('./auth/auth')
 const { User, Coin } = require("./models");
 const path = require('path')
+const Sequelize = require('sequelize')
 
 // establishing the I/O port
 const PORT = process.env.PORT || 4567
