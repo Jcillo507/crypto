@@ -7,6 +7,7 @@ const passport = require('passport')
 const appRouter = require('./routers/appRouter')
 const { authorized } = require('./auth/auth')
 const { User, Coin } = require("./models");
+const path = require('path')
 
 // establishing the I/O port
 const PORT = process.env.PORT || 4567
@@ -14,9 +15,7 @@ const PORT = process.env.PORT || 4567
 // initializing the express app
 const app = express()
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
+app.use(express.static(path.join(__dirname, './client/build')));
 // configure middleware
 app.use(logger('dev'))
 app.use(cors())
@@ -83,3 +82,7 @@ app.put(`/dashboard/:userId/:coin`, async (req, res) => {
   }
 })
 app.listen(PORT, () => console.log(`App is up and running listening on port ${PORT}`))
+
+if (process.env.NODE_ENV == "production") {
+  app.use('*', (req, res) => res.sendFile(path.join(__dirname, './client/build', "index.html")));
+}
