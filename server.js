@@ -7,8 +7,6 @@ const passport = require('passport')
 const appRouter = require('./routers/appRouter')
 const { authorized } = require('./auth/auth')
 const { User, Coin } = require("./models");
-const path = require('path')
-const Sequelize = require('sequelize')
 
 // establishing the I/O port
 const PORT = process.env.PORT || 4567
@@ -16,21 +14,9 @@ const PORT = process.env.PORT || 4567
 // initializing the express app
 const app = express()
 
-if (process.env.NODE_ENV === 'production') {
-  // If the node environment is production, connect to a remote PSQL database
-  const db = new Sequelize(process.env.DATABASE_URL, {
-    dialect: 'postgres'
-  });
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
 }
-else {
-  // Else connect to a local instance of PSQL running on your machine
-  const db = new Sequelize({
-    database: 'crypto', // Name of your local database
-    dialect: 'postgres'
-  });
-}
-app.use(express.static(path.join(__dirname, './client/build')));
-
 // configure middleware
 app.use(logger('dev'))
 app.use(cors())
@@ -96,8 +82,4 @@ app.put(`/dashboard/:userId/:coin`, async (req, res) => {
     throw error
   }
 })
-if (process.env.NODE_ENV == "production") {
-  app.use('*', (req, res) => res.sendFile(path.join(__dirname, './client/build', "index.html")));
-}
-
 app.listen(PORT, () => console.log(`App is up and running listening on port ${PORT}`))
