@@ -12,6 +12,7 @@ import CoinInfo from './components/Coininfo/'
 import ApiData from './services/coinAPI'
 import Footer from './components/Footer/'
 import CoinList from './components/CoinList/'
+// import Search from './components/Search/'
 
 
 class App extends Component {
@@ -33,11 +34,10 @@ class App extends Component {
     // fetch user data on page refresh
     try {
       const fetchedUser = await getProfile()
-      const data = await this.coinCall()
+      await this.coinCall()
       this.setState({
         isSignedIn: authService.isAuthenticated(),
         user: fetchedUser,
-        data: data,
       })
       console.log(this.state)
     } catch (e) {
@@ -110,6 +110,7 @@ class App extends Component {
           <div className="left">
             <Link to='/'>Home</Link>
             <Link to='/coinlist'>Coins</Link>
+            {/* < Search list={this.state.data}/> */}
           </div>
           <div className='nav-section'>
             {!isSignedIn &&

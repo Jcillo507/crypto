@@ -4,7 +4,7 @@ import './footer.scss'
 const Footer = ()=>{
 return(
   <div className='footer-ctr'>
-    CopyRight 2019
+    <p>Powered by <a href='https://cryptocontrol.io/en/'>CryptoControl</a> and <a href='https://www.coingecko.com/en'>CoinGecko API</a></p>
   </div>
 )
 }

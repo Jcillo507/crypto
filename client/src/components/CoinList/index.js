@@ -10,8 +10,8 @@ class CoinList extends React.Component {
   }
   render(){
     return(
-      <div className='coinlist'>
-    <CryptoList {...this.props}/> 
+    <div className='coinlist'>
+      <CryptoList {...this.props}/> 
     </div>
     )
   }

@@ -13,7 +13,6 @@ class Home extends React.Component {
     }
   }
   render() {
-    console.log(this.props, 'home')
     return (
       <div className='home-bs'>
 
@@ -21,10 +20,9 @@ class Home extends React.Component {
           <div className='coin-home-ctr'> 
           <CryptoList {...this.props} />
           </div>
-          <div>
+          
           <News />
-          </div>
-          {/* <Footer /> */}
+          
         </div>
         </div>
     )

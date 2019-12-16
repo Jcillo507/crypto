@@ -1,11 +1,12 @@
 import axios from 'axios'
 
 const url = `https://cryptocontrol.io/api/v1/public/`
+const api_key = process.env.REACT_APP_CRYPTONEWSAPI
 
 const api = axios.create({
   baseURL: url,
   headers: {
-    'x-api-key': 'a91f8e8f380dc0e8170982ff499c2821'
+    'x-api-key': api_key
   }
 })
 

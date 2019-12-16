@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom'
 import ApiData from '../../services/coinAPI'
 import Coin from '../Coin/'
 
-
-
 import './dashboard.scss'
 
 class Dashboard extends React.Component {
@@ -47,13 +45,12 @@ class Dashboard extends React.Component {
     const { user } = this.props
     const { coins } = this.state.faves
     const { data } = this.state
-
     const filterFave = data.filter((el) => {
       return coins.some((f) => {
         return f.name === el.name
       })
     })
-
+    
     const faveDisplay = filterFave.map(coin => (
       <div key={coin.id}>
         <Link
