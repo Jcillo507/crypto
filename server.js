@@ -8,6 +8,9 @@ const appRouter = require('./routers/appRouter')
 const { authorized } = require('./auth/auth')
 const { User, Coin } = require("./models");
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 // establishing the I/O port
 const PORT = process.env.PORT || 4567
 
