@@ -31,7 +31,7 @@ app.use(passport.initialize())
 
 app.get('/', async (req, res) => {
   try {
-    res.json({ message: 'Crypto' })
+    res.json({ message: 'Crypto working' })
   } catch (e) {
     res.status(e.status).json({ message: e.status })
   }

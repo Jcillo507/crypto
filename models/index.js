@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt')
 // connection to the database
 // if (process.env.NODE_ENV === 'production') {
   // If the node environment is production, connect to a remote PSQL database
-  const db = new Sequelize(process.env.DATABASE_URL, {
+const db = new Sequelize('https://jccn.herokuapp.com/', {
     dialect: 'postgres'
   });
 // }
