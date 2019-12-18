@@ -9,7 +9,7 @@ const { authorized } = require('./auth/auth')
 const { User, Coin } = require("./models");
 const path = require('path')
 
-// establishing the I/O port
+
 const PORT = process.env.PORT || 4567
 
 // initializing the express app
