@@ -8,7 +8,6 @@ const api = axios.create({
   baseURL: BASE_URL,
   headers: {
     'Authorization': `Bearer ${JWT_TOKEN}`,
-    'dialect': 'postgresql'
   }
 })
 
