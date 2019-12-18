@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt')
 // if (process.env.NODE_ENV === 'production') {
   // If the node environment is production, connect to a remote PSQL database
   const db = new Sequelize(process.env.DATABASE_URL, {
-    dialect: 'postgresql'
+    dialect: 'postgres'
   });
 // }
 // else {
