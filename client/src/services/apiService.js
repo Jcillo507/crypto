@@ -4,7 +4,7 @@ const BASE_URL = 'https://jccn.herokuapp.com/'
 // get token from localStorage (if it exists)
 const JWT_TOKEN = localStorage.getItem('token')
 
-const api = axios.create({
+const api = axios.get({
   baseURL: BASE_URL,
   headers: {
     'Authorization': `Bearer ${JWT_TOKEN}`
