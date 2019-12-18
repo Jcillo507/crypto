@@ -13,7 +13,7 @@ const api = axios.create({
 
 export const login = async (data) => {
   try {
-    const response = await api.post('./auth/login', data)
+    const response = await api.post('/auth/login', data)
     const { data: { token, user} } = response
 
     // store token in localStorage
@@ -27,7 +27,7 @@ export const login = async (data) => {
 
 export const getProfile = async () => {
   try {
-    const response = await api.get('./app/profile')
+    const response = await api.get('/app/profile')
     const { data: { user } } = response
     return user
   } catch (e) {
@@ -37,7 +37,7 @@ export const getProfile = async () => {
 
 export const signUp = async (data) => {
   try {
-    const response = await api.post('./auth/signup', data)
+    const response = await api.post('/auth/signup', data)
     const { data: { user, token } } = response
     console.log(user)
     // store token in localStorage
@@ -51,7 +51,7 @@ export const signUp = async (data) => {
 
 export const addCoin = async(userId, coin)=>{
   try {
-    const response = await api.post(`./dashboard/${userId}`, coin)
+    const response = await api.post(`/dashboard/${userId}`, coin)
     return response
   } catch (error) {
     throw error
@@ -60,7 +60,7 @@ export const addCoin = async(userId, coin)=>{
 
 export const getFaves = async (userId)=>{
   try {
-    const resp = await api.get(`./dashboard/${userId}`)
+    const resp = await api.get(`/dashboard/${userId}`)
     return resp.data
   } catch (error) {
     throw error
@@ -69,7 +69,7 @@ export const getFaves = async (userId)=>{
 export const deleteCoin = async (userId, coin) => {
   try {
     console.log(userId, coin)
-    const response = await api.put(`./dashboard/${userId}/${coin.name}`, coin.name)
+    const response = await api.put(`/dashboard/${userId}/${coin.name}`, coin.name)
     console.log(response)
     return response
   } catch (error) {
