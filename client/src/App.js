@@ -131,7 +131,7 @@ class App extends Component {
           </div>
         </nav>
 
-          <Footer />
+          {/* <Footer /> */}
         <main>
           <Route exact path='/' component={(props) => <Home {...props} coins={this.state.data} userId={this.state.userId} />} />
           <Route exact path='/coinlist' component={(props) => <CoinList {...props} coins={this.state.data} userId={this.state.userId} />} />
