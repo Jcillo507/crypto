@@ -7,7 +7,8 @@ const JWT_TOKEN = localStorage.getItem('token')
 const api = axios.create({
   baseURL: BASE_URL,
   headers: {
-    'Authorization': `Bearer ${JWT_TOKEN}`
+    'Authorization': `Bearer ${JWT_TOKEN}`,
+    'dialect': 'postgresql'
   }
 })
 
