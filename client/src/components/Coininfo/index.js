@@ -1,6 +1,7 @@
 import React from 'react'
-// import { CoinNews, CoinReddit, CoinTweet } from '../../services/newsAPI'
+import { CoinNews, CoinDetails, CoinTweet } from '../../services/newsAPI'
 import { addCoin, getFaves, deleteCoin } from '../../services/apiService'
+import {titleShort, contentShort} from '../Helpers'
 
 class CoinInfo extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class CoinInfo extends React.Component {
     this.userId = this.props.location.state.userId
     this.state = {
       news: [],
-      reds: [],
+      details: [],
       tweets: [],
       userId: this.userId,
       faves: { coins: [] },
@@ -17,27 +18,27 @@ class CoinInfo extends React.Component {
     }
   }
 
-  // coinCall = async () => {
-  //   try {
-  //     const news = await CoinNews(this.data.id)
-  //     this.setState({
-  //       news: news
-  //     })
-  //   } catch (error) {
-  //     throw error
-  //   }
-  // }
+  coinCall = async () => {
+    try {
+      const news = await CoinNews(this.data.symbol)
+      this.setState({
+        news: news.data
+      })
+    } catch (error) {
+      throw error
+    }
+  }
 
-  // redCall = async () => {
-  //   try {
-  //     const reds = await CoinReddit(this.data.id)
-  //     this.setState({
-  //       reds: reds
-  //     })
-  //   } catch (error) {
-  //     throw error();
-  //   }
-  // }
+  detailsCall = async () => {
+    try {
+      const reds = await CoinDetails(this.data.symbol)
+      this.setState({
+        details: reds.data
+      })
+    } catch (error) {
+      throw error();
+    }
+  }
 
   // tweetCall = async () => {
   //   try {
@@ -98,8 +99,8 @@ class CoinInfo extends React.Component {
   }
 
   componentDidMount = async () => {
-    // await this.coinCall()
-    // await this.redCall()
+    await this.coinCall()
+    await this.detailsCall()
     // await this.tweetCall()
     await this.showFaves()
   }
@@ -107,32 +108,33 @@ class CoinInfo extends React.Component {
   render() {
     const { market_data } = this.props.location.state.data
     const { news } = this.state
-    const { reds } = this.state
+    const { details } = this.state
     const { tweets } = this.state
+    console.log("details", details)
     const newsDisplay = news.map(news => {
       return (
-        <div key={news._id} className='hover-ctr'>
-          <a href={news.url}>
+        <div key={news.id} className='hover-ctr'>
+          <div href={news.url}>
             <div className='info-news-ctr' key={news._id}>
-              <h3>{news.title}</h3>
-              <p>{news.description}</p>
-              <img className='news-img' src={news.originalImageUrl} />
+              <h3>{titleShort(news.title)}</h3>
+              <div>{contentShort(news.content, news.url)}</div>
+              {/* <img className='news-img' src={news.originalImageUrl} /> */}
             </div>
-          </a>
+          </div>
         </div>
       )
     })
-    const redsDisplay = reds.map(red => {
-      return (
-        <div className='hover-ctr' key={red._id}>
-          <a href={red.url}>
-            <div className='info-rt-ctr'>
-              <h3>{red.title}</h3>
-            </div>
-          </a>
-        </div>
-      )
-    })
+    // const redsDisplay = reds.map(red => {
+    //   return (
+    //     <div className='hover-ctr' key={red._id}>
+    //       <a href={red.url}>
+    //         <div className='info-rt-ctr'>
+    //           <h3>{red.title}</h3>
+    //         </div>
+    //       </a>
+    //     </div>
+    //   )
+    // })
     const tweetDisplay = tweets.map(tweet => {
       return (
         <a href={tweet.url}>
@@ -178,7 +180,7 @@ class CoinInfo extends React.Component {
           <div className='red-twt-ctr'>
             <div className='news-base-ctr half-scroll'>
               <h2 className='info-bx-header'>Reddits</h2>
-              {redsDisplay}
+              {/* {redsDisplay} */}
             </div>
             <div className='news-base-ctr half-scroll'>
               <h2 className='info-bx-header'>Tweets</h2>
