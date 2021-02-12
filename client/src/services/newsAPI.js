@@ -30,7 +30,7 @@ export const CoinNews = async (id) => {
 
 export const CoinDetails = async (id) => {
   try {
-    const news = await api.get(`/v2/assets/${id}/profile?limit=500`)
+    const news = await api.get(`/v2/assets/${id}/profile?as-markdown`)
     return news.data
   } catch (e) {
     throw e

@@ -1,4 +1,5 @@
 import React from 'react'
+import CoinDetail from '../CoinDetail'
 import { CoinNews, CoinDetails, CoinTweet } from '../../services/newsAPI'
 import { addCoin, getFaves, deleteCoin } from '../../services/apiService'
 import {titleShort, contentShort} from '../Helpers'
@@ -36,7 +37,7 @@ class CoinInfo extends React.Component {
         details: reds.data
       })
     } catch (error) {
-      throw error();
+      throw error;
     }
   }
 
@@ -110,7 +111,6 @@ class CoinInfo extends React.Component {
     const { news } = this.state
     const { details } = this.state
     const { tweets } = this.state
-    console.log("details", details)
     const newsDisplay = news.map(news => {
       return (
         <div key={news.id} className='hover-ctr'>
@@ -118,7 +118,6 @@ class CoinInfo extends React.Component {
             <div className='info-news-ctr' key={news._id}>
               <h3>{titleShort(news.title)}</h3>
               <div>{contentShort(news.content, news.url)}</div>
-              {/* <img className='news-img' src={news.originalImageUrl} /> */}
             </div>
           </div>
         </div>
@@ -178,14 +177,10 @@ class CoinInfo extends React.Component {
             {newsDisplay}
           </div>
           <div className='red-twt-ctr'>
-            <div className='news-base-ctr half-scroll'>
-              <h2 className='info-bx-header'>Reddits</h2>
-              {/* {redsDisplay} */}
-            </div>
-            <div className='news-base-ctr half-scroll'>
-              <h2 className='info-bx-header'>Tweets</h2>
-              {tweetDisplay}
-            </div>
+            
+              <CoinDetail details={details}/>
+       
+         
           </div>
         </div>
       </div>

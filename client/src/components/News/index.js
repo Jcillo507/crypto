@@ -30,11 +30,11 @@ class News extends React.Component {
 
     const display = data.map(article => {
       return (
-        <div key={article._id} className="news-ctr">
+        <div key={article.id} className="news-ctr">
           <a href={article.url} className='news-title'><h3>{titleShort(article.title)}</h3></a>
-          <p className="news-desc">
+          <div className="news-desc">
             {contentShort(
-            article.content, article.url)}</p>
+            article.content, article.url)}</div>
         </div>
       )
     })
