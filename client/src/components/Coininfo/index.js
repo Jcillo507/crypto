@@ -1,7 +1,6 @@
 import React from 'react'
-import { CoinNews, CoinReddit, CoinTweet } from '../../services/newsAPI'
+// import { CoinNews, CoinReddit, CoinTweet } from '../../services/newsAPI'
 import { addCoin, getFaves, deleteCoin } from '../../services/apiService'
-import './coininfo.scss'
 
 class CoinInfo extends React.Component {
   constructor(props) {
@@ -18,38 +17,38 @@ class CoinInfo extends React.Component {
     }
   }
 
-  coinCall = async () => {
-    try {
-      const news = await CoinNews(this.data.id)
-      this.setState({
-        news: news
-      })
-    } catch (error) {
-      throw error
-    }
-  }
+  // coinCall = async () => {
+  //   try {
+  //     const news = await CoinNews(this.data.id)
+  //     this.setState({
+  //       news: news
+  //     })
+  //   } catch (error) {
+  //     throw error
+  //   }
+  // }
 
-  redCall = async () => {
-    try {
-      const reds = await CoinReddit(this.data.id)
-      this.setState({
-        reds: reds
-      })
-    } catch (error) {
-      throw error();
-    }
-  }
+  // redCall = async () => {
+  //   try {
+  //     const reds = await CoinReddit(this.data.id)
+  //     this.setState({
+  //       reds: reds
+  //     })
+  //   } catch (error) {
+  //     throw error();
+  //   }
+  // }
 
-  tweetCall = async () => {
-    try {
-      const tweets = await CoinTweet(this.data.id)
-      this.setState({
-        tweets: tweets
-      })
-    } catch (error) {
-      throw error
-    }
-  }
+  // tweetCall = async () => {
+  //   try {
+  //     const tweets = await CoinTweet(this.data.id)
+  //     this.setState({
+  //       tweets: tweets
+  //     })
+  //   } catch (error) {
+  //     throw error
+  //   }
+  // }
 
   handleFavorite = async e => {
     e.preventDefault()
@@ -99,9 +98,9 @@ class CoinInfo extends React.Component {
   }
 
   componentDidMount = async () => {
-    await this.coinCall()
-    await this.redCall()
-    await this.tweetCall()
+    // await this.coinCall()
+    // await this.redCall()
+    // await this.tweetCall()
     await this.showFaves()
   }
 

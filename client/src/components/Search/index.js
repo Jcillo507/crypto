@@ -1,5 +1,4 @@
 import React from 'react'
-import './search.scss'
 import Coin from '../Coin'
 
 class Search extends React.Component {

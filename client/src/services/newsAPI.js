@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const url = `https://cryptocontrol.io/api/v1/public/`
-const api_key = process.env.REACT_APP_CRYPTONEWSAPI
+const url = `https://data.messari.io/api`
+const api_key = process.env.REACT_APP_MESSARI_KEY
 
 const api = axios.create({
   baseURL: url,
@@ -10,38 +10,11 @@ const api = axios.create({
   }
 })
 
-export const CryptoNews = async () => {
+export const CoinNews = async ()=>{
   try {
-    const news = await api.get('/news')
+    const news = await api.get('/v1/news/btc?limit=500')
     return news.data
-  } catch (error) {
-    throw error
-  }
-}
-
-export const CoinNews = async (id) => {
-  try {
-    const coin = await api.get(`/news/coin/${id}`)
-    return coin.data
-  } catch (error) {
-    throw error
-  }
-}
-
-export const CoinReddit = async (id) => {
-  try {
-    const reddit = await api.get(`/reddit/coin/${id}`)
-    return reddit.data
-  } catch (error) {
-    throw error
-  }
-}
-
-export const CoinTweet = async (id)=>{
-  try {
-    const tweet = await api.get(`/tweets/coin/${id}`)
-    return tweet.data
-  } catch (error) {
-    throw error
+  } catch (e) {
+    throw e
   }
 }

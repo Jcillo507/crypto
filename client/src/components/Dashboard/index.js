@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import ApiData from '../../services/coinAPI'
 import Coin from '../Coin/'
 
-import './dashboard.scss'
 
 class Dashboard extends React.Component {
   constructor(props) {

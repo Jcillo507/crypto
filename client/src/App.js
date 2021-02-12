@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './App.scss'
+import './css/main.css'
 import Home from './components/Home/'
 import Dashboard from './components/Dashboard/'
 import Login from './components/Login/'
@@ -39,7 +39,6 @@ class App extends Component {
         isSignedIn: authService.isAuthenticated(),
         user: fetchedUser,
       })
-      console.log(this.state)
     } catch (e) {
       // throw e
       console.log('Issue fetching token')

@@ -2,7 +2,6 @@ import React from 'react'
 import CryptoList from '../CryptoList/'
 import News from '../News'
 import Footer from '../Footer/'
-import './home.scss'
 
 class Home extends React.Component {
   constructor(props) {

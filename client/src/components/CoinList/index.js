@@ -1,6 +1,5 @@
 import React from 'react'
 import CryptoList from '../CryptoList/'
-import './coinlist.scss'
 
 class CoinList extends React.Component {
   constructor(props) {

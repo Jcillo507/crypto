@@ -1,7 +1,7 @@
 import React from 'react'
+ import Coin from '../Coin/'
 import { Link } from 'react-router-dom'
-import Coin from '../Coin/'
-import './cryptolist.scss'
+
 
 
 import ApiData from '../../services/coinAPI'
