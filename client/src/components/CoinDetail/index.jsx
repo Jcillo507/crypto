@@ -6,6 +6,11 @@ const CoinDetail = (props) => {
     const urlFilter = /\[([^\][]*)]\(((?:https?|ftps?|file):\/\/[^()]*)\)/gi;
     return text.replace(urlFilter, '<a href="$2">$1</a>');
   };
+  const turnIntoDate = (text)=>{
+    const rawDate= text.substring(0, text.length - 10)
+    const formattedDate = rawDate.substr(5) + "-"+rawDate.substr(0,4)
+    return formattedDate
+  }
   const display = () => {
     return (
       <div className="">
@@ -21,7 +26,7 @@ const CoinDetail = (props) => {
         </div>
         <p>
           Genesis Date:{" "}
-          {profile.economics.launch.initial_distribution.genesis_block_date}
+          {turnIntoDate(profile.economics.launch.initial_distribution.genesis_block_date)}
         </p>
         <p>
           Initial Supply:{" "}
