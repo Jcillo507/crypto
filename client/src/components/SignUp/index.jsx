@@ -8,7 +8,6 @@ const SignUp=(props)=> {
       <div className='signup-form'>
       <SignUpForm {...props} />
       </div>
-
     </div>
   )
 }

@@ -65,8 +65,7 @@ class Dashboard extends React.Component {
 
         </Link>
       </div>
-    )
-    )
+    ))
 
     const name = (user.name !== undefined) ? user.name : ''
     return (
@@ -74,7 +73,7 @@ class Dashboard extends React.Component {
           <p className='db-title'>{`Welcome back ${name}`}</p>
       <div className='dashboard-ctr'>
         <div className='dashboard-text'>
-          {/* <h1 className='db-title'>Dashboard</h1> */}
+          <h1 className='db-title'>Coins I'm following</h1>
         </div>
         <div className='fave-display'>
           {faveDisplay}

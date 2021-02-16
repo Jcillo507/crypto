@@ -27,7 +27,6 @@ class News extends React.Component {
   }
   render() {
     const { data } = this.state
-
     const display = data.map(article => {
       return (
         <div key={article.id} className="news-ctr">

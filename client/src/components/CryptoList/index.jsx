@@ -1,59 +1,51 @@
-import React from 'react'
-import Coin from '../Coin'
-import { Link } from 'react-router-dom'
+import React from "react";
+import Coin from "../Coin";
+import { Link } from "react-router-dom";
 
-
-
-import ApiData from '../../services/coinAPI'
+import ApiData from "../../services/coinAPI";
 
 class CryptoList extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       data: {},
-      className: 'ticker',
-
-    }
+      className: "ticker",
+    };
   }
   componentDidMount = async () => {
-    await this.coinCall()
-    this.setClass()
-    
-  }
-
+    await this.coinCall();
+    this.setClass();
+  };
   coinCall = async () => {
     try {
-      const data = await ApiData()
+      const data = await ApiData();
       this.setState({
-        data: data
-      })
+        data: data,
+      });
+    } catch (error) {
+      throw error;
     }
-    catch (error) {
-      throw error
-    }
-  }
-  setClass = async() => {
-    if ( await this.props.location.pathname === '/coinlist') {
+  };
+  setClass = async () => {
+    if ((await this.props.location.pathname) === "/coinlist") {
       this.setState({
-        className: 'non-ticker'
-      })
-    }
-    else{
+        className: "non-ticker",
+      });
+    } else {
       this.setState({
-        className:'ticker'
-      })
-    }}
-
+        className: "ticker",
+      });
+    }
+  };
 
   render() {
-    const coinsArray = Array.from(this.state.data)
-    const coins = coinsArray.map(coin => (
+    const coinsArray = Array.from(this.state.data);
+    const coins = coinsArray.map((coin) => (
       <div key={coin.id}>
         <Link
-
           to={{
             pathname: `/CoinInfo/${coin.name}`,
-            state: { data: coin, userId: this.props.userId }
+            state: { data: coin, userId: this.props.userId },
           }}
         >
           <Coin
@@ -64,14 +56,13 @@ class CryptoList extends React.Component {
           />
         </Link>
       </div>
-    )
-    )
+    ));
     return (
-      <div className='list-ctr'>
+      <div className="list-ctr">
         <ul className={this.state.className}>{coins}</ul>
       </div>
-    )
+    );
   }
 }
- 
-export default CryptoList
+
+export default CryptoList;

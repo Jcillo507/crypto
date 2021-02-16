@@ -14,14 +14,11 @@ class Home extends React.Component {
   render() {
     return (
       <div className='home-bs'>
-
         <div className='home-ctr'>
           <div className='coin-home-ctr'> 
           <CryptoList {...this.props} />
           </div>
-          
           <News />
-          
         </div>
         </div>
     )
