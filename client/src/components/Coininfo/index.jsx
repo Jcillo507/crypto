@@ -20,7 +20,7 @@ class CoinInfo extends React.Component {
     };
   }
 
-  coinCall = async () => {
+  newsCall = async () => {
     try {
       const news = await CoinNews(this.data.symbol);
       this.setState({
@@ -100,7 +100,7 @@ class CoinInfo extends React.Component {
   };
 
   componentDidMount = async () => {
-    await this.coinCall();
+    await this.newsCall();
     await this.detailsCall();
     await this.metricsCall()
     await this.showFaves();
@@ -193,7 +193,7 @@ class CoinInfo extends React.Component {
             <h2 className="info-bx-header">News</h2>
             {newsDisplay}
           </div>
-            {/* <CoinDetail details={details} /> */}
+            <CoinDetail details={details} />
             <CoinMetric metrics={metrics}/>
         </div>
       </div>

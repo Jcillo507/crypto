@@ -2,7 +2,6 @@ import React from "react";
 
 const CoinMetric = (props) => {
   const { metrics } = props;
-  console.log(metrics);
   const metricDisplay = () => {
     return (
       <div>

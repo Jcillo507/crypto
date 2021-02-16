@@ -17,7 +17,6 @@ class News extends React.Component {
   newsCall = async () => {
     try {
       const data = await MarketNews()
-      console.log(data)
       this.setState({
         data: data.data
       })
