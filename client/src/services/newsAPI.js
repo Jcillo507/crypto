@@ -36,3 +36,12 @@ export const CoinDetails = async (id) => {
     throw e
   }
 }
+
+export const CoinMetrics = async(id)=>{
+  try {
+    const metrics = await api.get(`/v1/assets/${id}/metrics`)
+    return metrics.data
+  } catch (e) {
+    throw e
+  }
+}
