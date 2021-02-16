@@ -42,7 +42,7 @@ const CoinDetail = (props) => {
           Launch style:
           {profile.economics.launch.general.launch_style}
         </p>
-        <div>
+        <p>
           Launch Details:{" "}
           <span
             dangerouslySetInnerHTML={{
@@ -51,8 +51,8 @@ const CoinDetail = (props) => {
               ),
             }}
           ></span>
-        </div>
-        <div>
+        </p>
+        <p>
           Background Details:
           <span
             dangerouslySetInnerHTML={{
@@ -61,7 +61,7 @@ const CoinDetail = (props) => {
               ),
             }}
           ></span>
-        </div>
+        </p>
       </div>
     );
   };

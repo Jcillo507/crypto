@@ -1,5 +1,5 @@
 import React from 'react'
- import Coin from '../Coin/'
+import Coin from '../Coin'
 import { Link } from 'react-router-dom'
 
 

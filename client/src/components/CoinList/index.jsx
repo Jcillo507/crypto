@@ -1,5 +1,5 @@
 import React from 'react'
-import CryptoList from '../CryptoList/'
+import CryptoList from '../CryptoList'
 
 class CoinList extends React.Component {
   constructor(props) {
