@@ -1,6 +1,6 @@
 import React from "react";
 import CoinDetail from "../CoinDetail";
-import CoinMetric from "../CoinMetric"
+import CoinMetric from "../CoinMetric";
 import { CoinNews, CoinDetails, CoinMetrics } from "../../services/newsAPI";
 import { addCoin, getFaves, deleteCoin } from "../../services/apiService";
 import { titleShort, contentShort } from "../Helpers";
@@ -41,16 +41,16 @@ class CoinInfo extends React.Component {
       throw error;
     }
   };
-  metricsCall = async()=>{
+  metricsCall = async () => {
     try {
-      const metrics = await CoinMetrics(this.data.symbol)
+      const metrics = await CoinMetrics(this.data.symbol);
       this.setState({
-        metrics: metrics.data
-      })
+        metrics: metrics.data,
+      });
     } catch (e) {
-      throw e
+      throw e;
     }
-  }
+  };
   handleFavorite = async (e) => {
     e.preventDefault();
     const id = this.props.user.id;
@@ -102,7 +102,7 @@ class CoinInfo extends React.Component {
   componentDidMount = async () => {
     await this.newsCall();
     await this.detailsCall();
-    await this.metricsCall()
+    await this.metricsCall();
     await this.showFaves();
   };
 
@@ -125,77 +125,37 @@ class CoinInfo extends React.Component {
     });
 
     return (
-      <div className="info-ctr">
-        <h1 className="coin-name">{this.data.name}</h1>
-        <div className="flex-ctr">
-          <div className="data-ctr">
-            <h2>Market Data</h2>
-            <p className="info-datapts">
-              Current price: ${market_data.current_price.usd}
-            </p>
-            <img className="coin-logo" src={this.data.image.large} />
-            <p className="info-datapts">
-              Market Cap Rank : {market_data.market_cap_rank}
-            </p>
-            <p className="info-datapts">
-              Circulating Supply:{market_data.circulating_supply}
-            </p>
-            <p className="info-datapts">24h High: {market_data.high_24h.usd}</p>
-            <p className="info-datapts">24h Low: {market_data.low_24h.usd}</p>
-            <p className="info-datapts">
-              Market Cap Change 24H: {market_data.market_cap_change_24h}
-            </p>
-            <p className="info-datapts">
-              Market Cap % Change 24h:{" "}
-              {market_data.market_cap_change_percentage_24h}
-            </p>
-            <p className="info-datapts">
-              Price Change 24H: {market_data.price_change_24h}
-            </p>
-            <p className="info-datapts">
-              Price Change 24H: {market_data.price_change_percentage_24h}%
-            </p>
-            <p className="info-datapts">
-              Price Change 7d: {market_data.price_change_percentage_7d}%
-            </p>
-            <p className="info-datapts">
-              Price Change 14d: {market_data.price_change_percentage_14d}%
-            </p>
-            <p className="info-datapts">
-              Price Change 30d: {market_data.price_change_percentage_30d}%
-            </p>
-            <p className="info-datapts">
-              Price Change 60d: {market_data.price_change_percentage_60d}%
-            </p>
-            <p className="info-datapts">
-              Price Change 200d: {market_data.price_change_percentage_200d}%
-            </p>
-            <p className="info-datapts">
-              Price Change 1y: {market_data.price_change_percentage_1y}%
-            </p>
-            {this.state.liked ? (
-              <button
-                className="info-button unfollow"
-                onClick={this.handleUnfavorite}
-              >
-                Unfollow
-              </button>
-            ) : (
-              <button
-                className="info-button follow"
-                onClick={this.handleFavorite}
-              >
-                Follow
-              </button>
-            )}
-          </div>
-          <div className="news-base-ctr full-scroll">
-            <h2 className="info-bx-header">News</h2>
-            {newsDisplay}
-          </div>
-            <CoinDetail details={details} />
-            <CoinMetric metrics={metrics}/>
+      <div className="CoinInfo">
+        <div className="CoinInfo__header">
+          <span className="CoinInfo__header--left">
+            <img
+              className="CoinInfo__header--image"
+              src={this.data.image.large}
+            />
+            <h1 className="CoinInfo__header--title">{this.data.name}</h1>
+          </span>
+          {this.state.liked ? (
+            <button
+              className="CoinInfo__header--button"
+              onClick={this.handleUnfavorite}
+            >
+              Unfollow
+            </button>
+          ) : (
+            <button
+              className="CoinInfo__header--button"
+              onClick={this.handleFavorite}
+            >
+              Follow
+            </button>
+          )}
         </div>
+        <div className="">
+          <h2 className="">News</h2>
+          {newsDisplay}
+        </div>
+        <CoinDetail details={details} />
+        <CoinMetric metrics={metrics} />
       </div>
     );
   }
