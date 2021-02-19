@@ -1,6 +1,7 @@
 import React from "react";
 import CoinDetail from "../CoinDetail";
 import CoinMetric from "../CoinMetric";
+import CoinNewsView from "../CoinNewsView";
 import { CoinNews, CoinDetails, CoinMetrics } from "../../services/newsAPI";
 import { addCoin, getFaves, deleteCoin } from "../../services/apiService";
 import { titleShort, contentShort } from "../Helpers";
@@ -111,18 +112,6 @@ class CoinInfo extends React.Component {
     const { news } = this.state;
     const { details } = this.state;
     const { metrics } = this.state;
-    const newsDisplay = news.map((news) => {
-      return (
-        <div key={news.id} className="hover-ctr">
-          <div href={news.url}>
-            <div className="info-news-ctr" key={news._id}>
-              <h3>{titleShort(news.title)}</h3>
-              <div>{contentShort(news.content, news.url)}</div>
-            </div>
-          </div>
-        </div>
-      );
-    });
 
     return (
       <div className="CoinInfo">
@@ -150,10 +139,8 @@ class CoinInfo extends React.Component {
             </button>
           )}
         </div>
-        <div className="">
-          <h2 className="">News</h2>
-          {newsDisplay}
-        </div>
+     
+        <CoinNewsView news={news}/>
         <CoinDetail details={details} />
         <CoinMetric metrics={metrics} />
       </div>
