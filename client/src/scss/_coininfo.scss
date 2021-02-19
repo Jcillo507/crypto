@@ -1,4 +1,4 @@
-.CoinInfo {
+.coinInfo {
   margin-top: 100px;
   @include flexbox(column, space-around);
 
@@ -23,5 +23,8 @@
     &--button{
       margin-right: 100px;
     }
+  }
+  &__wrapper{
+    @include flexbox();
   }
 }

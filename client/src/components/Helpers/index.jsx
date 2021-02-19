@@ -22,3 +22,13 @@ export const contentShort = (content, url) => {
     );
   }
 };
+
+export const turnIntoLink = (text) => {
+  const urlFilter = /\[([^\][]*)]\(((?:https?|ftps?|file):\/\/[^()]*)\)/gi;
+  return text.replace(urlFilter, '<a href="$2">$1</a>');
+};
+export const turnIntoDate = (text) => {
+  const rawDate = text.substring(0, text.length - 10);
+  const formattedDate = rawDate.substr(5) + "-" + rawDate.substr(0, 4);
+  return formattedDate;
+};

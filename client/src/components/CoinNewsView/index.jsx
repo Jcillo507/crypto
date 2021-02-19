@@ -1,13 +1,12 @@
 import React from "react";
-import { titleShort, contentShort } from "../Helpers";
+import { titleShort, contentShort, turnIntoLink } from "../Helpers";
 
 
 const CoinNewsView = (props) => {
-  console.log(props)
   const {news}= props
       const newsDisplay = news.map((news) => {
         return (
-          <div key={news.id} className="hover-ctr">
+          <div key={news.id} >
             <div href={news.url}>
               <div className="info-news-ctr" key={news._id}>
                 <h3>{titleShort(news.title)}</h3>
@@ -17,7 +16,7 @@ const CoinNewsView = (props) => {
           </div>
         );
       });
-  return <div>{news?newsDisplay:"Loading"}</div>;
+  return <div className="newsDisplay">{news ? newsDisplay : "Loading"}</div>;
 };
 
 export default CoinNewsView;

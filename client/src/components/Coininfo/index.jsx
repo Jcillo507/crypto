@@ -4,7 +4,6 @@ import CoinMetric from "../CoinMetric";
 import CoinNewsView from "../CoinNewsView";
 import { CoinNews, CoinDetails, CoinMetrics } from "../../services/newsAPI";
 import { addCoin, getFaves, deleteCoin } from "../../services/apiService";
-import { titleShort, contentShort } from "../Helpers";
 
 class CoinInfo extends React.Component {
   constructor(props) {
@@ -114,14 +113,14 @@ class CoinInfo extends React.Component {
     const { metrics } = this.state;
 
     return (
-      <div className="CoinInfo">
-        <div className="CoinInfo__header">
-          <span className="CoinInfo__header--left">
+      <div className="coinInfo">
+        <div className="coinInfo__header">
+          <span className="coinInfo__header--left">
             <img
-              className="CoinInfo__header--image"
+              className="coinInfo__header--image"
               src={this.data.image.large}
             />
-            <h1 className="CoinInfo__header--title">{this.data.name}</h1>
+            <h1 className="coinInfo__header--title">{this.data.name}</h1>
           </span>
           {this.state.liked ? (
             <button
@@ -139,10 +138,13 @@ class CoinInfo extends React.Component {
             </button>
           )}
         </div>
-     
-        <CoinNewsView news={news}/>
-        <CoinDetail details={details} />
-        <CoinMetric metrics={metrics} />
+        <main className="coinInfo__wrapper">
+          <section className="coinInfo__wrapper--left">
+          <CoinMetric metrics={metrics} />
+          <CoinDetail details={details} />
+          </section>
+          <CoinNewsView news={news} />
+        </main>
       </div>
     );
   }

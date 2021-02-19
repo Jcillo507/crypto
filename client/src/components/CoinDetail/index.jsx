@@ -1,19 +1,12 @@
 import React from "react";
+import {turnIntoDate, turnIntoLink} from '../Helpers'
 
 const CoinDetail = (props) => {
   const { profile } = props.details;
-  const turnIntoLink = (text) => {
-    const urlFilter = /\[([^\][]*)]\(((?:https?|ftps?|file):\/\/[^()]*)\)/gi;
-    return text.replace(urlFilter, '<a href="$2">$1</a>');
-  };
-  const turnIntoDate = (text)=>{
-    const rawDate= text.substring(0, text.length - 10)
-    const formattedDate = rawDate.substr(5) + "-"+rawDate.substr(0,4)
-    return formattedDate
-  }
+
   const display = () => {
     return (
-      <div className="">
+      <div className="coinDetail">
         <p>Sector: {profile.general.overview.sector}</p>
         <p>Tagline: {profile.general.overview.tagline}</p>
         <div>
@@ -26,7 +19,9 @@ const CoinDetail = (props) => {
         </div>
         <p>
           Genesis Date:{" "}
-          {turnIntoDate(profile.economics.launch.initial_distribution.genesis_block_date)}
+          {turnIntoDate(
+            profile.economics.launch.initial_distribution.genesis_block_date
+          )}
         </p>
         <p>
           Initial Supply:{" "}

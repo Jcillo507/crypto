@@ -1,0 +1,8 @@
+.coinMetric{
+  @include flexbox(column, space-around);
+  &__wrapper{
+    &--bottom{
+      @include flexbox()
+    }
+  }
+}

@@ -137,7 +137,7 @@ main {
   margin: 0;
 }
 
-.CoinInfo {
+.coinInfo {
   margin-top: 100px;
   display: -moz-flex;
   display: -ms-flex;
@@ -151,7 +151,7 @@ main {
   justify-content: space-around;
 }
 
-.CoinInfo__header {
+.coinInfo__header {
   display: -moz-flex;
   display: -ms-flex;
   display: flex;
@@ -167,7 +167,7 @@ main {
   align-items: center;
 }
 
-.CoinInfo__header--left {
+.coinInfo__header--left {
   display: -moz-flex;
   display: -ms-flex;
   display: flex;
@@ -181,17 +181,30 @@ main {
   align-items: center;
 }
 
-.CoinInfo__header--image {
+.coinInfo__header--image {
   height: 125px;
 }
 
-.CoinInfo__header--title {
+.coinInfo__header--title {
   font-size: 70px;
   margin-left: 30px;
 }
 
-.CoinInfo__header--button {
+.coinInfo__header--button {
   margin-right: 100px;
+}
+
+.coinInfo__wrapper {
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-box-flex-direction: row;
+  -moz-box-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-justify-content: space-between;
+  -moz-box-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
 }
 
 .coinlist {
@@ -200,6 +213,44 @@ main {
   display: flex;
   flex-direction: column;
   flex-flow: wrap;
+}
+
+.newsDisplay {
+  height: auto;
+  overflow: scroll;
+  width: 40vw;
+  align-items: center;
+  text-align: center;
+}
+
+.coinDetail {
+  width: 30vw;
+}
+
+.coinMetric {
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-box-flex-direction: column;
+  -moz-box-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-justify-content: space-around;
+  -moz-box-justify-content: space-around;
+  -ms-justify-content: space-around;
+  justify-content: space-around;
+}
+
+.coinMetric__wrapper--bottom {
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-box-flex-direction: row;
+  -moz-box-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-justify-content: space-between;
+  -moz-box-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
 }
 
 .list-ctr {
