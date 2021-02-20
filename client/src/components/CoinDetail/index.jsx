@@ -7,7 +7,7 @@ const CoinDetail = (props) => {
   const display = () => {
     return (
       <div className="coinDetail">
-        <p>Sector: {profile.general.overview.sector}</p>
+        <h3>Coin Profile</h3>
         <p>Tagline: {profile.general.overview.tagline}</p>
         <div>
           Project Details:
