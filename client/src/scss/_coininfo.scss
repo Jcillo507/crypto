@@ -1,5 +1,5 @@
 .coinInfo {
-  margin-top: 100px;
+  margin-top: 60px;
   @include flexbox(column, space-around);
 
   &__header {
@@ -25,6 +25,7 @@
     }
   }
   &__wrapper{
-    @include flexbox();
+    @include flexbox(row, space-around);
+    margin: 0 175px;
   }
 }

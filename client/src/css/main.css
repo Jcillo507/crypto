@@ -19,7 +19,7 @@
   position: fixed;
   width: 100%;
   background-color: #011638;
-  height: 7vh;
+  height: 60px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -138,7 +138,7 @@ main {
 }
 
 .coinInfo {
-  margin-top: 100px;
+  margin-top: 60px;
   display: -moz-flex;
   display: -ms-flex;
   display: flex;
@@ -201,10 +201,11 @@ main {
   -webkit-box-flex-direction: row;
   -moz-box-flex-direction: row;
   flex-direction: row;
-  -webkit-box-justify-content: space-between;
-  -moz-box-justify-content: space-between;
-  -ms-justify-content: space-between;
-  justify-content: space-between;
+  -webkit-box-justify-content: space-around;
+  -moz-box-justify-content: space-around;
+  -ms-justify-content: space-around;
+  justify-content: space-around;
+  margin: 0 175px;
 }
 
 .coinlist {
