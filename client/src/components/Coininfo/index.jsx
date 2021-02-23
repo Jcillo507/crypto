@@ -2,7 +2,7 @@ import React from "react";
 import CoinDetail from "../CoinDetail";
 import CoinMetric from "../CoinMetric";
 import CoinNewsView from "../CoinNewsView";
-import { CoinNews, CoinDetails, CoinMetrics } from "../../services/newsAPI";
+import { CoinNews, CoinDetails, CoinMetrics, CoinTimeData } from "../../services/newsAPI";
 import { addCoin, getFaves, deleteCoin } from "../../services/apiService";
 
 class CoinInfo extends React.Component {
@@ -11,11 +11,12 @@ class CoinInfo extends React.Component {
     this.data = this.props.location.state.data;
     this.userId = this.props.location.state.userId;
     this.state = {
+      userId: this.userId,
+      faves: { coins: [] },
       news: [],
       details: [],
       metrics: [],
-      userId: this.userId,
-      faves: { coins: [] },
+      marketDataInfo: [],
       liked: false,
     };
   }
@@ -51,6 +52,16 @@ class CoinInfo extends React.Component {
       throw e;
     }
   };
+  marketDataCall = async ()=>{
+    try {
+      const marketData = await CoinTimeData(this.data.symbol)
+      this.setState({
+        marketDataInfo : marketData.data
+      })
+    } catch (e) {
+      throw e
+    }
+  }
   handleFavorite = async (e) => {
     e.preventDefault();
     const id = this.props.user.id;
@@ -103,6 +114,7 @@ class CoinInfo extends React.Component {
     await this.newsCall();
     await this.detailsCall();
     await this.metricsCall();
+    await this.marketDataCall()
     await this.showFaves();
   };
 
@@ -111,6 +123,8 @@ class CoinInfo extends React.Component {
     const { news } = this.state;
     const { details } = this.state;
     const { metrics } = this.state;
+    console.log(market_data)
+    // console.log(this.state.marketDataInfo)
 
     return (
       <div className="coinInfo">
