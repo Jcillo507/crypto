@@ -3,9 +3,10 @@
   @include flexbox(column, space-around);
 
   &__header {
-    @include flexbox(row, space-between);
+    @include flexbox(row, space-around);
     width: 100vw;
     padding: 0 75px;
+    margin:  50px 0;
     align-items: center;
 
     &--left {
@@ -27,5 +28,6 @@
   &__wrapper{
     @include flexbox(row, space-around);
     margin: 0 175px;
+    height: 100%;
   }
 }

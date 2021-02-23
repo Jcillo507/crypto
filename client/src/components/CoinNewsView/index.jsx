@@ -16,7 +16,10 @@ const CoinNewsView = (props) => {
           </div>
         );
       });
-  return <div className="newsDisplay">{news ? newsDisplay : "Loading"}</div>;
+  return( <div className="newsDisplay">
+    <h2>News</h2>
+    {news ? newsDisplay : "Loading"}
+    </div>);
 };
 
 export default CoinNewsView;

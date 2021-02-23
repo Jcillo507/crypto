@@ -24,7 +24,7 @@ const CoinMetric = (props) => {
             {Object.entries(metrics.lend_rates).map(([key, value], i) => {
               return (
                 <p key={i}>
-                  {key} : {value}
+                  {key} : {value.toFixed(4)}
                 </p>
               );
             })}
@@ -34,7 +34,7 @@ const CoinMetric = (props) => {
             <p>Mining Algorithm: {metrics.mining_stats.mining_algo}</p>
             <p>
               Average Block Size:
-              {metrics.on_chain_data.block_size_bytes_average}
+              {metrics.on_chain_data.block_size_bytes_average.toFixed(4)}
             </p>
             <p>
               Total Block Size:{metrics.on_chain_data.block_size_bytes_total}

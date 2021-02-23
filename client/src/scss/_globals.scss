@@ -8,7 +8,7 @@
 }
 
 .App {
-  height:100vh;
+  height:100%;
   width: 100%;
   margin: 0;
   background-color: #ffffff;
@@ -42,18 +42,6 @@
   padding: 10px;
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
-  padding: 10px;
-}
-
-.nav-section {
-  // min-width: 250px;
-  display: flex;
-  justify-content: space-around;
-}
 
 a {
   text-decoration: none;
