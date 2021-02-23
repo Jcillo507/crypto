@@ -139,11 +139,11 @@ class CoinInfo extends React.Component {
           )}
         </div>
         <main className="coinInfo__wrapper">
-          <section className="coinInfo__wrapper--left">
-          {/* <CoinMetric metrics={metrics} /> */}
+          <CoinMetric metrics={metrics} />
+          <section className="coinInfo__ctr">
           <CoinDetail details={details} />
-          </section>
           <CoinNewsView news={news} />
+          </section>
         </main>
       </div>
     );

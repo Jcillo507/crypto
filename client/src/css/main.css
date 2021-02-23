@@ -156,20 +156,6 @@ main {
   align-items: center;
 }
 
-.coinInfo__header--left {
-  display: -moz-flex;
-  display: -ms-flex;
-  display: flex;
-  -webkit-box-flex-direction: row;
-  -moz-box-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-justify-content: space-between;
-  -moz-box-justify-content: space-between;
-  -ms-justify-content: space-between;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .coinInfo__header--image {
   height: 125px;
 }
@@ -183,7 +169,7 @@ main {
   margin-right: 100px;
 }
 
-.coinInfo__wrapper {
+.coinInfo__ctr {
   display: -moz-flex;
   display: -ms-flex;
   display: flex;
@@ -194,8 +180,6 @@ main {
   -moz-box-justify-content: space-around;
   -ms-justify-content: space-around;
   justify-content: space-around;
-  margin: 0 175px;
-  height: 100%;
 }
 
 .newsDisplay {
@@ -228,10 +212,10 @@ main {
   -webkit-box-flex-direction: row;
   -moz-box-flex-direction: row;
   flex-direction: row;
-  -webkit-box-justify-content: space-between;
-  -moz-box-justify-content: space-between;
-  -ms-justify-content: space-between;
-  justify-content: space-between;
+  -webkit-box-justify-content: space-around;
+  -moz-box-justify-content: space-around;
+  -ms-justify-content: space-around;
+  justify-content: space-around;
 }
 
 .list-ctr {

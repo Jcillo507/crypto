@@ -1,5 +1,5 @@
 
-@mixin flexbox ($direction:row, $spacing:space-between) {
+@mixin flexbox ($direction:row, $spacing:space-around) {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
