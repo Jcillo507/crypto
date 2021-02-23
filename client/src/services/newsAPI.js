@@ -49,7 +49,6 @@ export const CoinMetrics = async(id)=>{
 export const CoinTimeData = async (id)=>{
   try {
     const timeData = await api.get(`/v1/assets/${id}/metrics/price/time-series?interval=1d`)
-    console.log(timeData.data)
     return timeData.data
   } catch (e) {
     throw e

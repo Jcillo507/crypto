@@ -2,7 +2,12 @@ import React from "react";
 import CoinDetail from "../CoinDetail";
 import CoinMetric from "../CoinMetric";
 import CoinNewsView from "../CoinNewsView";
-import { CoinNews, CoinDetails, CoinMetrics, CoinTimeData } from "../../services/newsAPI";
+import {
+  CoinNews,
+  CoinDetails,
+  CoinMetrics,
+  CoinTimeData,
+} from "../../services/newsAPI";
 import { addCoin, getFaves, deleteCoin } from "../../services/apiService";
 
 class CoinInfo extends React.Component {
@@ -16,7 +21,7 @@ class CoinInfo extends React.Component {
       news: [],
       details: [],
       metrics: [],
-      marketDataInfo: [],
+      timeData: [],
       liked: false,
     };
   }
@@ -52,16 +57,16 @@ class CoinInfo extends React.Component {
       throw e;
     }
   };
-  marketDataCall = async ()=>{
+  timeDataCall = async () => {
     try {
-      const marketData = await CoinTimeData(this.data.symbol)
+      const marketData = await CoinTimeData(this.data.symbol);
       this.setState({
-        marketDataInfo : marketData.data
-      })
+        timeData: marketData.data,
+      });
     } catch (e) {
-      throw e
+      throw e;
     }
-  }
+  };
   handleFavorite = async (e) => {
     e.preventDefault();
     const id = this.props.user.id;
@@ -114,7 +119,7 @@ class CoinInfo extends React.Component {
     await this.newsCall();
     await this.detailsCall();
     await this.metricsCall();
-    await this.marketDataCall()
+    await this.timeDataCall();
     await this.showFaves();
   };
 
@@ -123,8 +128,7 @@ class CoinInfo extends React.Component {
     const { news } = this.state;
     const { details } = this.state;
     const { metrics } = this.state;
-    console.log(market_data)
-    // console.log(this.state.marketDataInfo)
+    const { timeData } = this.state;
 
     return (
       <div className="coinInfo">
@@ -153,10 +157,10 @@ class CoinInfo extends React.Component {
           )}
         </div>
         <main className="coinInfo__wrapper">
-          <CoinMetric metrics={metrics} />
+          <CoinMetric metrics={metrics} data={market_data} time={timeData} />
           <section className="coinInfo__ctr">
-          <CoinDetail details={details} />
-          <CoinNewsView news={news} />
+            <CoinDetail details={details} />
+            <CoinNewsView news={news} />
           </section>
         </main>
       </div>

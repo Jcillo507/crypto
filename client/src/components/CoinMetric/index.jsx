@@ -1,6 +1,7 @@
 import React from "react";
 
 const CoinMetric = (props) => {
+  console.log(props)
   const { metrics } = props;
   const metricDisplay = () => {
     return (
