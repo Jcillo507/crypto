@@ -1,12 +1,39 @@
 import React from "react";
 
 const CoinMetric = (props) => {
-  console.log(props)
+  console.log(props);
   const { metrics } = props;
+  const { data } = props;
+  const { time } = props;
+  // const graphValue = [];
+ 
+  // const graph = ()=>{
+  //   Array.from(time.values).map((value)=>{
+  //     const test = value.splice(2, 3);
+  //     console.log(test)
+  //   })
+  // }
+  // graph();
+
   const metricDisplay = () => {
     return (
       <div className="coinMetric">
         <section className="coinMetric__wrapper--top">
+                    <p className='info-datapts'>Current price: ${data.current_price.usd}</p>
+            <p className='info-datapts'>Market Cap Rank : {data.market_cap_rank}</p>
+            <p className='info-datapts'>Circulating Supply:{data.circulating_supply}</p>
+            <p className='info-datapts'>24h High: {data.high_24h.usd}</p>
+            <p className='info-datapts'>24h Low: {data.low_24h.usd}</p>
+            <p className='info-datapts'>Market Cap Change 24H: {data.market_cap_change_24h}</p>
+            <p className='info-datapts'>Market Cap % Change 24h: {data.market_cap_change_percentage_24h}</p>
+            <p className='info-datapts'>Price Change 24H: {data.price_change_24h}</p>
+            <p className='info-datapts'>Price Change  24H: {data.price_change_percentage_24h}%</p>
+            <p className='info-datapts'>Price Change  7d: {data.price_change_percentage_7d}%</p>
+            <p className='info-datapts'>Price Change  14d: {data.price_change_percentage_14d}%</p>
+            <p className='info-datapts'>Price Change  30d: {data.price_change_percentage_30d}%</p>
+            <p className='info-datapts'>Price Change  60d: {data.price_change_percentage_60d}%</p>
+            <p className='info-datapts'>Price Change  200d: {data.price_change_percentage_200d}%</p>
+            <p className='info-datapts'>Price Change  1y: {data.price_change_percentage_1y}%</p>
           <p>All Time High :{metrics.all_time_high.price}</p>
           <p> Days Since all time High:{metrics.all_time_high.days_since}</p>
           <p>
