@@ -2,6 +2,7 @@
 * {
   font-family: 'Lato', sans-serif;
   margin: 0;
+  padding: 0;
   color: #011638;
 }
 
@@ -107,7 +108,7 @@ main {
 }
 
 .coin-data-ctr {
-  width: 100px;
+  width: 90px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -118,11 +119,6 @@ main {
   height: 70px;
   width: 70px;
   align-self: center;
-  margin-left: 15px;
-}
-
-.coin-data {
-  margin: 0;
 }
 
 .coinInfo {
@@ -197,8 +193,6 @@ main {
 }
 
 .newsDisplay {
-  height: 2000px;
-  overflow: scroll;
   width: 40vw;
 }
 
@@ -233,7 +227,7 @@ main {
 }
 
 .list-ctr {
-  margin: 0;
+  margin-left: -20px;
   padding: 0;
 }
 
@@ -246,9 +240,10 @@ main {
 .non-ticker {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  margin: 100px;
   flex-flow: wrap;
+  justify-content: center;
+  margin-top: 60px;
+  padding: 100px;
 }
 
 .dashboard-ctr {
@@ -269,8 +264,8 @@ main {
 }
 
 .db-title {
-  margin-top: 8vh;
-  margin-bottom: 40px;
+  padding-top: 60px;
+  padding-bottom: 40px;
   text-align: center;
   font-size: 30px;
 }
@@ -284,7 +279,7 @@ main {
 }
 
 .home-bs {
-  margin-top: 7vh;
+  margin-top: 60px;
 }
 
 .home-ctr {

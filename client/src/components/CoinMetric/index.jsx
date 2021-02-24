@@ -68,7 +68,7 @@ const CoinMetric = (props) => {
         </p>
         <p>
           <b>All Time High :</b>
-          {metrics.all_time_high.price}
+          {metrics.all_time_high.price.toFixed(2)}
         </p>
         <p>
           {" "}

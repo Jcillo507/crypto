@@ -1,5 +1,5 @@
 .list-ctr {
-  margin: 0;
+  margin-left: -20px;
   padding: 0;
 }
 
@@ -12,7 +12,8 @@
 .non-ticker {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  margin: 100px;
   flex-flow: wrap;
+  justify-content: center;
+  margin-top: 60px;
+  padding: 100px ;
 }

@@ -21,7 +21,7 @@ export const MarketNews = async () => {
 
 export const CoinNews = async (id) => {
   try {
-    const news = await api.get(`/v1/news/${id}?limit=100`)
+    const news = await api.get(`/v1/news/${id}?limit=30`)
     return news.data
   } catch (e) {
     throw e
