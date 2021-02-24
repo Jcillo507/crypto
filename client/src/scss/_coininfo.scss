@@ -18,8 +18,12 @@
     &--button{
       margin-right: 100px;
     }
+    &--left{
+      @include flexbox();
+      align-items: center;   
+    }
   }
   &__ctr{
-    @include flexbox();    
+    @include flexbox(); 
   }
 }

@@ -18,75 +18,73 @@ const CoinMetric = (props) => {
   const metricDisplay = () => {
     return (
       <div className="coinMetric">
-        <section className="coinMetric__wrapper--bottom">
-          <section className="coinMetric__wrapper--top">
-            {/* <h4>Price Info</h4> */}
-            <p>
-              <b>Current price:</b> ${data.current_price.usd}
-            </p>
-            <p>
-              <b>Market Cap Rank :</b> {data.market_cap_rank}
-            </p>
-            <p>
-              <b>Circulating Supply:</b>
-              {data.circulating_supply}
-            </p>
-            <p>
-              <b>24h High:</b> {data.high_24h.usd}
-            </p>
-            <p>
-              <b>24h Low:</b> {data.low_24h.usd}
-            </p>
-            <p>
-              <b>Market Cap Change 24H:</b> {data.market_cap_change_24h}
-            </p>
-            <p>
-              <b>Market Cap % Change 24h:</b>{" "}
-              {data.market_cap_change_percentage_24h}
-            </p>
-            <p>
-              <b>Price Change 24H:</b> {data.price_change_24h}
-            </p>
-            <p>
-              <b>Price Change 24H:</b> {data.price_change_percentage_24h}%
-            </p>
-            <p>
-              <b>Price Change 7d:</b> {data.price_change_percentage_7d}%
-            </p>
-            <p>
-              <b>Price Change 14d:</b> {data.price_change_percentage_14d}%
-            </p>
-            <p>
-              <b>Price Change 30d:</b> {data.price_change_percentage_30d}%
-            </p>
-            <p>
-              <b>Price Change 60d:</b> {data.price_change_percentage_60d}%
-            </p>
-            <p>
-              <b>Price Change 200d:</b> {data.price_change_percentage_200d}%
-            </p>
-            <p>
-              <b>Price Change 1y:</b> {data.price_change_percentage_1y}%
-            </p>
-            <p>
-              <b>All Time High :</b>
-              {metrics.all_time_high.price}
-            </p>
-            <p>
-              {" "}
-              <b>Days Since all time High:</b>
-              {metrics.all_time_high.days_since}
-            </p>
-            <p>
-              <b>Active Addresses:</b>
-              {metrics.blockchain_stats_24_hours.count_of_active_addresses}
-            </p>
-            <p>
-              <b>Transactions in Last 24 hours:</b>
-              {metrics.blockchain_stats_24_hours.count_of_active_addresses}
-            </p>
-          </section>
-          <div className="">
+        <h4>Price Info</h4>
+        <p>
+          <b>Current price:</b> ${data.current_price.usd}
+        </p>
+        <p>
+          <b>Market Cap Rank :</b> {data.market_cap_rank}
+        </p>
+        <p>
+          <b>Circulating Supply:</b>
+          {data.circulating_supply}
+        </p>
+        <p>
+          <b>24h High:</b> {data.high_24h.usd}
+        </p>
+        <p>
+          <b>24h Low:</b> {data.low_24h.usd}
+        </p>
+        <p>
+          <b>Market Cap Change 24H:</b> {data.market_cap_change_24h}
+        </p>
+        <p>
+          <b>Market Cap % Change 24h:</b>{" "}
+          {data.market_cap_change_percentage_24h}
+        </p>
+        <p>
+          <b>Price Change 24H:</b> {data.price_change_24h}
+        </p>
+        <p>
+          <b>Price Change 24H:</b> {data.price_change_percentage_24h}%
+        </p>
+        <p>
+          <b>Price Change 7d:</b> {data.price_change_percentage_7d}%
+        </p>
+        <p>
+          <b>Price Change 14d:</b> {data.price_change_percentage_14d}%
+        </p>
+        <p>
+          <b>Price Change 30d:</b> {data.price_change_percentage_30d}%
+        </p>
+        <p>
+          <b>Price Change 60d:</b> {data.price_change_percentage_60d}%
+        </p>
+        <p>
+          <b>Price Change 200d:</b> {data.price_change_percentage_200d}%
+        </p>
+        <p>
+          <b>Price Change 1y:</b> {data.price_change_percentage_1y}%
+        </p>
+        <p>
+          <b>All Time High :</b>
+          {metrics.all_time_high.price}
+        </p>
+        <p>
+          {" "}
+          <b>Days Since all time High:</b>
+          {metrics.all_time_high.days_since}
+        </p>
+        <p>
+          <b>Active Addresses:</b>
+          {metrics.blockchain_stats_24_hours.count_of_active_addresses}
+        </p>
+        <p>
+          <b>Transactions in Last 24 hours:</b>
+          {metrics.blockchain_stats_24_hours.count_of_active_addresses}
+        </p>
+        <div className="coinMetric__ctrBtm">
+          <div >
             <h4>Chain Data</h4>
             <p>
               <b>Mining Algorithm:</b> {metrics.mining_stats.mining_algo}
@@ -116,7 +114,7 @@ const CoinMetric = (props) => {
               );
             })}
           </div>
-        </section>
+        </div>
       </div>
     );
   };

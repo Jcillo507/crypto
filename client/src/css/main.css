@@ -169,6 +169,20 @@ main {
   margin-right: 100px;
 }
 
+.coinInfo__header--left {
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-box-flex-direction: row;
+  -moz-box-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-justify-content: space-around;
+  -moz-box-justify-content: space-around;
+  -ms-justify-content: space-around;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .coinInfo__ctr {
   display: -moz-flex;
   display: -ms-flex;
@@ -205,22 +219,7 @@ main {
   justify-content: space-around;
 }
 
-.coinMetric__wrapper--top {
-  display: -moz-flex;
-  display: -ms-flex;
-  display: flex;
-  -webkit-box-flex-direction: column;
-  -moz-box-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-justify-content: space-evenly;
-  -moz-box-justify-content: space-evenly;
-  -ms-justify-content: space-evenly;
-  justify-content: space-evenly;
-  height: 400px;
-  flex-wrap: wrap;
-}
-
-.coinMetric__wrapper--bottom {
+.coinMetric__ctrBtm {
   display: -moz-flex;
   display: -ms-flex;
   display: flex;
