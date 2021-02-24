@@ -1,6 +1,11 @@
 .coinMetric{
   @include flexbox(column, space-around);
   &__wrapper{
+    &--top{
+      @include flexbox(column, space-evenly);
+      height:400px;
+      flex-wrap: wrap;
+    }
     &--bottom{
       @include flexbox()
     }

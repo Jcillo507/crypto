@@ -146,12 +146,12 @@ main {
   -webkit-box-flex-direction: row;
   -moz-box-flex-direction: row;
   flex-direction: row;
-  -webkit-box-justify-content: space-around;
-  -moz-box-justify-content: space-around;
-  -ms-justify-content: space-around;
-  justify-content: space-around;
+  -webkit-box-justify-content: space-between;
+  -moz-box-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
   width: 100vw;
-  padding: 0 75px;
+  padding: 0 175px;
   margin: 50px 0;
   align-items: center;
 }
@@ -203,6 +203,21 @@ main {
   -moz-box-justify-content: space-around;
   -ms-justify-content: space-around;
   justify-content: space-around;
+}
+
+.coinMetric__wrapper--top {
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-box-flex-direction: column;
+  -moz-box-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-justify-content: space-evenly;
+  -moz-box-justify-content: space-evenly;
+  -ms-justify-content: space-evenly;
+  justify-content: space-evenly;
+  height: 400px;
+  flex-wrap: wrap;
 }
 
 .coinMetric__wrapper--bottom {
