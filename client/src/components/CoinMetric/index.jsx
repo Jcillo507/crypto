@@ -1,4 +1,5 @@
 import React from "react";
+import BarChart from './graph'
 
 const CoinMetric = (props) => {
   console.log(props);
@@ -104,7 +105,8 @@ const CoinMetric = (props) => {
   return (
     <>
       <h2>Metrics</h2>
-      <div>{metrics.all_time_high ? metricDisplay() : "loading"}</div>
+      {/* <div>{metrics.all_time_high ? metricDisplay() : "loading"}</div> */}
+    <BarChart/>
     </>
   );
 };

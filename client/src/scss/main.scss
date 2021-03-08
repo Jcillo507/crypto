@@ -17,4 +17,8 @@
 @import "search";
 @import "signup";
 
+.graph {
+  transform: rotate(180deg);
+  transform:scaleY(-1)
+}
 
