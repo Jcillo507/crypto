@@ -120,9 +120,10 @@ class CoinInfo extends React.Component {
 
   getTimeData = async ()=>{
     let arr = []
-
+  
     await this.state.timeDataCall.values.map((day)=>{
-      arr.push(day[2])
+      const dayFormat = { x: day[0], y: [day[1], day[2], day[3], day[4]]}
+      arr.push(dayFormat)
     })
     this.setState({
       timeData:arr
@@ -142,7 +143,7 @@ class CoinInfo extends React.Component {
     const { details } = this.state;
     const { metrics } = this.state;
     const { timeData } = this.state;
-  
+    console.log(timeData)
     return (
       <div className="coinInfo">
         <div className="coinInfo__header">

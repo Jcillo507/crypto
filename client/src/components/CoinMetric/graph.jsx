@@ -22,7 +22,7 @@ const BarChart = (props) => {
   }, [props.data])
   return (
     <>
-      <div className='graph' id="coin-graph" style={{ margin: "100px" }}></div>
+      {/* <div className='graph' id="coin-graph" style={{ margin: "100px" }}></div> */}
     </>
   )
 }

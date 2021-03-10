@@ -5,7 +5,6 @@ const CoinMetric = (props) => {
   const { metrics } = props;
   const { data } = props;
   const { time } = props;
-  console.log(time)
 
   const metricDisplay = () => {
     return (
