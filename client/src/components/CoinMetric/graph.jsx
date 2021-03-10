@@ -9,7 +9,7 @@ class Candlestick extends Component {
   }
   render() {
     console.log(this.props.data)
-    const graphDataPoints = this.props.data
+    const graphDataPoints = this.props.data.slice(-90)
     const options = {
       theme: "light2", // "light1", "light2", "dark1", "dark2"
       animationEnabled: true,
@@ -30,7 +30,7 @@ class Candlestick extends Component {
         showInLegend: true,
         name: "Intel Corporation",
         yValueFormatString: "$###0.00",
-        xValueFormatString: "MMMM YY",
+        xValueFormatString: "DD MMM YY",
         dataPoints: graphDataPoints
       }
       ]
