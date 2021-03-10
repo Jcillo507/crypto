@@ -1,5 +1,5 @@
 import React from "react";
-import BarChart from './graph'
+import Candlestick from './graph'
 
 const CoinMetric = (props) => {
   const { metrics } = props;
@@ -105,7 +105,7 @@ const CoinMetric = (props) => {
     <>
       <h2>Metrics</h2>
       {/* <div>{metrics.all_time_high ? metricDisplay() : "loading"}</div> */}
-      <BarChart data={time}/>
+      <Candlestick data={time}/>
     </>
   );
 };

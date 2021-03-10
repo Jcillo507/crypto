@@ -1,29 +1,50 @@
-import React, { useEffect } from "react";
-import * as d3 from "d3";
+import React, { Component } from 'react';
+import CanvasJSReact from '../../assets/canvasjs.react';
+var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-const BarChart = (props) => {
-  console.log(props)
-  const drawChart = () => {
-    const data = props.data;
-    const svg = d3.select("#coin-graph").append("svg").attr("width", 9000).attr("height", 600);
-    svg.selectAll("rect")
-      .data(data)
-      .enter()
-      .append("rect")
-      .attr("x", (d, i) => i * 1.1)
-      .attr("y", 0)
-      .attr("width", 1.2)
-      .attr("height", (d, i) => d)
-      .attr("fill", "green");
+class Candlestick extends Component {
+  constructor(props) {
+    super(props)
+
   }
-  useEffect(() => {
-    drawChart();
-
-  }, [props.data])
-  return (
-    <>
-      {/* <div className='graph' id="coin-graph" style={{ margin: "100px" }}></div> */}
-    </>
-  )
+  render() {
+    console.log(this.props.data)
+    const graphDataPoints = this.props.data
+    const options = {
+      theme: "light2", // "light1", "light2", "dark1", "dark2"
+      animationEnabled: true,
+      exportEnabled: true,
+      title: {
+        text: "Intel Corporation Stock Price -  2017"
+      },
+      axisX: {
+        valueFormatString: "MMM"
+      },
+      axisY: {
+        includeZero: false,
+        prefix: "$",
+        title: "Price (in USD)"
+      },
+      data: [{
+        type: "candlestick",
+        showInLegend: true,
+        name: "Intel Corporation",
+        yValueFormatString: "$###0.00",
+        xValueFormatString: "MMMM YY",
+        dataPoints: graphDataPoints
+      }
+      ]
+    }
+    console.log(options.data)
+    return (
+      <div>
+        <CanvasJSChart options={options}
+          onRef={ref => this.chart = ref}
+        />
+        {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
+      </div>
+    );
+  }
 }
-export default BarChart;
+
+export default Candlestick;
