@@ -204,19 +204,6 @@ main {
   display: -moz-flex;
   display: -ms-flex;
   display: flex;
-  -webkit-box-flex-direction: column;
-  -moz-box-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-justify-content: space-around;
-  -moz-box-justify-content: space-around;
-  -ms-justify-content: space-around;
-  justify-content: space-around;
-}
-
-.coinMetric__ctrBtm {
-  display: -moz-flex;
-  display: -ms-flex;
-  display: flex;
   -webkit-box-flex-direction: row;
   -moz-box-flex-direction: row;
   flex-direction: row;
@@ -224,6 +211,16 @@ main {
   -moz-box-justify-content: space-around;
   -ms-justify-content: space-around;
   justify-content: space-around;
+}
+
+.coinMetric__graph {
+  width: 40%;
+  color: white;
+  margin-top: 30px;
+}
+
+.coinMetric__data {
+  margin-left: -100px;
 }
 
 .list-ctr {

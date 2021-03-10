@@ -1,7 +1,11 @@
 .coinMetric {
-  @include flexbox(column, space-around);
-
-&__ctrBtm{
-  @include flexbox();
+  @include flexbox(row, space-around);
+&__graph{
+  width:40%;
+  color: white;
+  margin-top:30px;
+}
+&__data{
+  margin-left:-100px;
 }
 }

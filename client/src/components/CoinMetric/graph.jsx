@@ -12,11 +12,14 @@ class Candlestick extends Component {
     console.log(document.title)
     const graphDataPoints = this.props.data.slice(-90)
     const options = {
-      theme: "light2", // "light1", "light2", "dark1", "dark2"
+      theme: "light1",
       animationEnabled: true,
       exportEnabled: true,
+      width:1000,
+      height:600,
+      exportEnabled:false,
       title: {
-        text: document.title
+        text: "Last 90 Days"
       },
       axisX: {
         valueFormatString: "MMM"
@@ -28,16 +31,15 @@ class Candlestick extends Component {
       },
       data: [{
         type: "candlestick",
-        showInLegend: true,
-        name: "Intel Corporation",
         yValueFormatString: "$###0.00",
         xValueFormatString: "DD MMM YY",
         dataPoints: graphDataPoints
       }
       ]
     }
+    console.log(this.chart)
     return (
-      <div>
+      <div style={{width:'600px'}}>
         <CanvasJSChart options={options}
           onRef={ref => this.chart = ref}
         />
