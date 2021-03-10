@@ -1,11 +1,12 @@
 .coinMetric {
   @include flexbox(row, space-around);
-&__graph{
-  width:40%;
-  color: white;
-  margin-top:30px;
-  margin-left:-100px;
 
-}
+  &__graph {
+    width: 50%;
+    color: white;
+    margin-top: 30px;
+    margin-left: -100px;
+
+  }
 
 }
