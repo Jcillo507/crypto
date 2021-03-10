@@ -8,14 +8,15 @@ class Candlestick extends Component {
 
   }
   render() {
-    console.log(this.props.data)
+
+    console.log(document.title)
     const graphDataPoints = this.props.data.slice(-90)
     const options = {
       theme: "light2", // "light1", "light2", "dark1", "dark2"
       animationEnabled: true,
       exportEnabled: true,
       title: {
-        text: "Intel Corporation Stock Price -  2017"
+        text: document.title
       },
       axisX: {
         valueFormatString: "MMM"
@@ -35,7 +36,6 @@ class Candlestick extends Component {
       }
       ]
     }
-    console.log(options.data)
     return (
       <div>
         <CanvasJSChart options={options}

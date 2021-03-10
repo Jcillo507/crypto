@@ -10,8 +10,8 @@ import {
   CoinMetrics,
   CoinTimeData,
 } from "../../services/newsAPI";
+
 import { addCoin, getFaves, deleteCoin } from "../../services/apiService";
-import { formatDate } from "../../assets/canvasjs.min";
 
 class CoinInfo extends React.Component {
   constructor(props) {
@@ -128,7 +128,6 @@ class CoinInfo extends React.Component {
       return format
     }
     await this.state.timeDataCall.values.map((day) => {
-      console.log(formatDate(day[0]))
       const dayFormat = { x: new Date(day[0]), y: [day[1], day[2], day[3], day[4]] }
       arr.push(dayFormat)
     })
@@ -137,6 +136,7 @@ class CoinInfo extends React.Component {
     })
   }
   componentDidMount = async () => {
+    document.title= this.data.name
     await this.newsCall();
     await this.detailsCall();
     await this.metricsCall();
