@@ -48,7 +48,7 @@ export const CoinMetrics = async(id)=>{
 
 export const CoinTimeData = async (id)=>{
   try {
-    const timeData = await api.get(`/v1/assets/${id}/metrics/price/time-series?interval=1d`)
+    const timeData = await api.get(`/v1/assets/${id}/metrics/price/time-series?interval=1d&after=2021-01-01`)
     return timeData.data
   } catch (e) {
     throw e

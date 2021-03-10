@@ -2,10 +2,10 @@ import React from "react";
 import BarChart from './graph'
 
 const CoinMetric = (props) => {
-  console.log(props);
   const { metrics } = props;
   const { data } = props;
   const { time } = props;
+  console.log(time)
 
   const metricDisplay = () => {
     return (
@@ -106,7 +106,7 @@ const CoinMetric = (props) => {
     <>
       <h2>Metrics</h2>
       {/* <div>{metrics.all_time_high ? metricDisplay() : "loading"}</div> */}
-    <BarChart/>
+      <BarChart data={time}/>
     </>
   );
 };

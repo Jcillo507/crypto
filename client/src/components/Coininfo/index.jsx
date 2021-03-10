@@ -23,7 +23,8 @@ class CoinInfo extends React.Component {
       news: [],
       details: [],
       metrics: [],
-      timeData: [],
+      timeDataCall: [],
+      timeData:[],
       liked: false,
     };
   }
@@ -63,7 +64,7 @@ class CoinInfo extends React.Component {
     try {
       const marketData = await CoinTimeData(this.data.symbol);
       this.setState({
-        timeData: marketData.data,
+        timeDataCall: marketData.data,
       });
     } catch (e) {
       throw e;
@@ -117,21 +118,31 @@ class CoinInfo extends React.Component {
     }
   };
 
+  getTimeData = async ()=>{
+    let arr = []
+
+    await this.state.timeDataCall.values.map((day)=>{
+      arr.push(day[2])
+    })
+    this.setState({
+      timeData:arr
+    })
+  }
   componentDidMount = async () => {
     await this.newsCall();
     await this.detailsCall();
     await this.metricsCall();
     await this.timeDataCall();
     await this.showFaves();
+    await this.getTimeData()
   };
-
   render() {
     const { market_data } = this.props.location.state.data;
     const { news } = this.state;
     const { details } = this.state;
     const { metrics } = this.state;
     const { timeData } = this.state;
-
+  
     return (
       <div className="coinInfo">
         <div className="coinInfo__header">
