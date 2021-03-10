@@ -1,7 +1,5 @@
-
 import React from 'react'
 import { Route } from 'react-router-dom'
-import './coin.scss'
 
 const Coin = (props) => {
 

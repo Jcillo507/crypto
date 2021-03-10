@@ -2,7 +2,6 @@ import React from 'react'
 import CryptoList from '../CryptoList/'
 import News from '../News'
 import Footer from '../Footer/'
-import './home.scss'
 
 class Home extends React.Component {
   constructor(props) {
@@ -15,14 +14,11 @@ class Home extends React.Component {
   render() {
     return (
       <div className='home-bs'>
-
         <div className='home-ctr'>
           <div className='coin-home-ctr'> 
           <CryptoList {...this.props} />
           </div>
-          
           <News />
-          
         </div>
         </div>
     )

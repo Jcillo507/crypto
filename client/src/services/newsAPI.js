@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const url = `https://cryptocontrol.io/api/v1/public/`
-const api_key = process.env.REACT_APP_CRYPTONEWSAPI
+const url = `https://data.messari.io/api`
+const api_key = process.env.REACT_APP_MESSARI_KEY
 
 const api = axios.create({
   baseURL: url,
@@ -10,38 +10,48 @@ const api = axios.create({
   }
 })
 
-export const CryptoNews = async () => {
+export const MarketNews = async () => {
   try {
-    const news = await api.get('/news')
+    const news = await api.get('/v1/news?limit=50')
     return news.data
-  } catch (error) {
-    throw error
+  } catch (e) {
+    throw e
   }
 }
 
 export const CoinNews = async (id) => {
   try {
-    const coin = await api.get(`/news/coin/${id}`)
-    return coin.data
-  } catch (error) {
-    throw error
+    const news = await api.get(`/v1/news/${id}?limit=30`)
+    return news.data
+  } catch (e) {
+    throw e
   }
 }
 
-export const CoinReddit = async (id) => {
+export const CoinDetails = async (id) => {
   try {
-    const reddit = await api.get(`/reddit/coin/${id}`)
-    return reddit.data
-  } catch (error) {
-    throw error
+    const news = await api.get(`/v2/assets/${id}/profile?as-markdown`)
+    return news.data
+  } catch (e) {
+    throw e
   }
 }
 
-export const CoinTweet = async (id)=>{
+export const CoinMetrics = async(id)=>{
   try {
-    const tweet = await api.get(`/tweets/coin/${id}`)
-    return tweet.data
-  } catch (error) {
-    throw error
+    const metrics = await api.get(`/v1/assets/${id}/metrics`)
+    return metrics.data
+  } catch (e) {
+    throw e
+  }
+}
+
+export const CoinTimeData = async (id)=>{
+  const today = new Date(new Date().setDate(new Date().getDate() - 30))
+  try {
+    const timeData = await api.get(`/v1/assets/${id}/metrics/price/time-series?interval=1d`)
+    return timeData.data
+  } catch (e) {
+    throw e
   }
 }

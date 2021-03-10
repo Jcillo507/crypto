@@ -1,0 +1,19 @@
+.list-ctr {
+  margin-left: -20px;
+  padding: 0;
+}
+
+.ticker {
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+}
+
+.non-ticker {
+  display: flex;
+  flex-direction: column;
+  flex-flow: wrap;
+  justify-content: center;
+  margin-top: 60px;
+  padding: 100px ;
+}

@@ -1,6 +1,5 @@
 import React from 'react'
-import CryptoList from '../CryptoList/'
-import './coinlist.scss'
+import CryptoList from '../CryptoList'
 
 class CoinList extends React.Component {
   constructor(props) {
@@ -10,7 +9,7 @@ class CoinList extends React.Component {
   }
   render(){
     return(
-    <div className='coinlist'>
+    <div>
       <CryptoList {...this.props}/> 
     </div>
     )

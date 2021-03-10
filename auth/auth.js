@@ -58,8 +58,7 @@ passport.use('login', new LocalStrategy({
   try {
     // find user by their email
     const user = await User.findOne({ where: { email: email } })
-    console.log(user.email)
-    console.log(`*** user: ${user} ***`)
+ 
 
     if (!user) {
       return done(null, false, { message: 'User not found' })

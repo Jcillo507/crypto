@@ -1,6 +1,5 @@
 import React from 'react'
 import SignUpForm from '../SignUpForm/'
-import './signup.scss'
 
 const SignUp=(props)=> {
   return (
@@ -9,7 +8,6 @@ const SignUp=(props)=> {
       <div className='signup-form'>
       <SignUpForm {...props} />
       </div>
-
     </div>
   )
 }

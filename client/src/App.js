@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import './App.scss'
-import Home from './components/Home/'
-import Dashboard from './components/Dashboard/'
-import Login from './components/Login/'
+import './css/main.css'
+import Home from './components/Home'
+import Dashboard from './components/Dashboard'
+import Login from './components/Login'
 import { Route, Link } from 'react-router-dom'
 import { login, getProfile, signUp } from './services/apiService'
 import ProtectedRoute from './components/ProtectedRoute'
 import authService from './services/authService'
-import SignUp from './components/SignUp/'
-import CoinInfo from './components/Coininfo/'
+import SignUp from './components/SignUp'
+import CoinInfo from './components/Coininfo'
 import ApiData from './services/coinAPI'
-import Footer from './components/Footer/'
-import CoinList from './components/CoinList/'
+import Footer from './components/Footer'
+import CoinList from './components/CoinList'
 // import Search from './components/Search/'
 
 
@@ -39,7 +39,6 @@ class App extends Component {
         isSignedIn: authService.isAuthenticated(),
         user: fetchedUser,
       })
-      console.log(this.state)
     } catch (e) {
       // throw e
       console.log('Issue fetching token')
