@@ -120,9 +120,8 @@ class CoinInfo extends React.Component {
 
   getTimeData = async ()=>{
     let arr = []
-  
     await this.state.timeDataCall.values.map((day)=>{
-      const dayFormat = { x: day[0], y: [day[1], day[2], day[3], day[4]]}
+      const dayFormat = { x: new Date(day[0]), y: [day[1], day[2], day[3], day[4]]}
       arr.push(dayFormat)
     })
     this.setState({
