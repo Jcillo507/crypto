@@ -8,14 +8,13 @@ class Candlestick extends Component {
 
   }
   render() {
-
-    console.log(document.title)
+    console.log(this.props)
     const graphDataPoints = this.props.data.slice(-90)
     const options = {
       theme: "light1",
       animationEnabled: true,
       exportEnabled: true,
-      width:800,
+      width:900,
       height:600,
       exportEnabled:false,
       title: {
@@ -37,9 +36,8 @@ class Candlestick extends Component {
       }
       ]
     }
-    console.log(this.chart)
     return (
-      <div style={{width:'600px'}}>
+      <div style={{width:'400px'}}>
         <CanvasJSChart options={options}
           onRef={ref => this.chart = ref}
         />

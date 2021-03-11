@@ -121,12 +121,6 @@ class CoinInfo extends React.Component {
 
   getTimeData = async () => {
     let arr = []
-    const formatDay = (d) => {
-      const day = new Date(d)
-      const format = JSON.stringify(day).slice(0, 11)
-      console.log(format)
-      return format
-    }
     await this.state.timeDataCall.values.map((day) => {
       const dayFormat = { x: new Date(day[0]), y: [day[1], day[2], day[3], day[4]] }
       arr.push(dayFormat)
@@ -134,6 +128,7 @@ class CoinInfo extends React.Component {
     this.setState({
       timeData: arr
     })
+    console.log("fire", this.state.timeData)
   }
   componentDidMount = async () => {
     document.title= this.data.name
@@ -141,8 +136,8 @@ class CoinInfo extends React.Component {
     await this.detailsCall();
     await this.metricsCall();
     await this.timeDataCall();
-    await this.showFaves();
     await this.getTimeData()
+    await this.showFaves();
   };
   render() {
     const { market_data } = this.props.location.state.data;
