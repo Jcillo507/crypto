@@ -14,7 +14,7 @@ class Candlestick extends Component {
       theme: "light1",
       animationEnabled: true,
       exportEnabled: true,
-      width:900,
+      width:800,
       height:600,
       exportEnabled:false,
       title: {
