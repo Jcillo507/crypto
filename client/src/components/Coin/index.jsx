@@ -10,7 +10,7 @@ const Coin = (props) => {
           <img className='coin-img' src={props.image} />
           <div className='coin-data-ctr'>
             <p className='coin-data'>{props.coinId} </p>
-            <p className='coin-data'>{props.price}</p>
+            <p className='coin-data-btm'>{props.price}</p>
           </div>
         </div>
       </Route>
